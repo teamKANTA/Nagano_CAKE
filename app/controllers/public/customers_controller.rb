@@ -8,6 +8,9 @@ class Public::CustomersController < ApplicationController
   def quit
   end
   
+  def update
+  end 
+  
   def withdraw
   end 
 end
