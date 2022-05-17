@@ -11,7 +11,7 @@ class Customer < ApplicationRecord
 
   validates :family_name, presence: true
   validates :first_name, presence: true
-  validates :family_name_kane, presence: true
+  validates :family_name_kana, presence: true
   validates :first_name_kana, presence: true
   validates :postal_code, presence: true, length: {maximum: 7}
   validates :address, presence: true

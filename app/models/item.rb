@@ -1,12 +1,12 @@
 class Item < ApplicationRecord
   has_many :order_details, dependent: :destroy
-  has_many :order, through: :order_details, dependent: :destroy
+  has_many :orders, through: :order_details, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   belongs_to :genre
   has_one_attached :item_image
   
-  validates :item_name, presence: :true
-  validates :introduction, presence: :true
+  validates :item_name, presence: true
+  validates :introduction, presence: true
   
   def get_item_image(width, height)
     unless item_image.attached?
