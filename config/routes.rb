@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-    root to: 'homes#top' 
-    get 'about' => 'homes#about'
+    
 
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update]
@@ -15,22 +14,24 @@ Rails.application.routes.draw do
     resources :order_details, only: [:update]
   end
 
-  
-  resources :items, only: [:index, :show]
-  
-  resources :customers, only: [:show, :edit, :update] 
-  get 'customers/quit', as: 'quit'
-  patch 'customers/withdraw', as: 'withdraw'
-  
-  resources :shipping_addresses, only: [:create, :index, :edit, :update, :destroy]
-  
-  resources :cart_items, only: [:index, :create, :update, :destroy]
-  delete 'cart_items/empty', as: 'empty'
-  
-  resources :orders, only: [:new, :create, :index, :show]
-  get 'orders/completed', as: 'completed'
-  post 'orders/confirmation', as: 'confirmation'
-  
+  scope module: :public do
+    root to: 'homes#top'
+    get 'about' => 'homes#about'
+    resources :items, only: [:index, :show]
+    
+    resources :customers, only: [:show, :edit, :update]
+    get 'customers/quit', as: 'quit'
+    patch 'customers/withdraw', as: 'withdraw'
+    
+    resources :shipping_addresses, only: [:create, :index, :edit, :update, :destroy]
+    
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete 'cart_items/empty', as: 'empty'
+    
+    resources :orders, only: [:new, :create, :index, :show]
+    get 'orders/completed', as: 'completed'
+    post 'orders/confirmation', as: 'confirmation'
+  end
   
   
   
