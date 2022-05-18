@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :items, only: [:index, :show]
 
-    resource :customers, only: [:show, :edit, :update]
+    resource :customer, only: [:show, :edit, :update]
     get 'customers/quit', as: 'quit'
     patch 'customers/withdraw', as: 'withdraw'
 
