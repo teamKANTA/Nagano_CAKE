@@ -16,7 +16,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def index
-    @cart_items = current_customer.cart_items
+    #@cart_items = current_customer.cart_items
   end
 
   def update
