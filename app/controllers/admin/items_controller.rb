@@ -14,8 +14,14 @@ class Admin::ItemsController < ApplicationController
   end
   
   def create
-    @item = Item.new(items_params)
-    redirect_to admin_items_path
+    @genres = Genre.all
+    @item = Item.new(item_params)
+    if @item.save
+      flash[:notice] = "新商品を登録しました"
+      redirect_to admin_items_path
+    else
+      render :new
+    end
   end 
   
   def update
@@ -23,6 +29,6 @@ class Admin::ItemsController < ApplicationController
   
   private
   def item_params
-    params.require(:item).permit(:name, :introduction, :price, :is_active, :item_image, :genre)
+    params.require(:item).permit(:name, :introduction, :price, :is_active, :item_image, :genre_id)
   end 
 end
