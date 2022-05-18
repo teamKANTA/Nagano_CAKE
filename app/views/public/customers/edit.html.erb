@@ -1,2 +1,11 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container my-4">
+  <h3 class="bg-light d-inline-block px-4 mx-5 mb-3">会員情報編集</h3>
+
+  <%= form_with model: current_customer do |f| %>
+
+  <%= f.label :氏名 %>
+  <%= f.text_field :family_name, autofocus: true %>
+  <%= f.text_field :first_name %>
+
+
+  <% end %>
