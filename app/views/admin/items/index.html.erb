@@ -1,2 +1,25 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<div class="container">
+  <div class="row justify-content-between">
+    <div class="col-xs-12">
+      <h5 class="pr-3 pl-3 mb-5 head-line title_h2 text-center bg-light"><strong>商品一覧</strong></h5>
+    </div>
+    <div>
+      <%= link_to new_admin_item_path do %>
+        <i class="fas fa-plus" style="color:green;"></i>
+        <i class="text-dark">新規商品登録</i>
+      <% end %>
+    </div>
+    
+  </div>
+  
+  <div class="row">  
+    <div class="col-lg-10 mx-auto">
+      <%= render "item_list", items: @items %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>
