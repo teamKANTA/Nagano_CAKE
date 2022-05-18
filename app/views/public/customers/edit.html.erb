@@ -3,9 +3,48 @@
 
   <%= form_with model: current_customer do |f| %>
 
-  <%= f.label :氏名 %>
-  <%= f.text_field :family_name, autofocus: true %>
-  <%= f.text_field :first_name %>
-
+　　<div class="form-group row">
+　　  <div class="col-2">
+　　    <%= f.label :氏名 %>
+　　  </div>
+　　    <%= f.text_field :family_name, autofocus: true, class: "mr-5" %>
+        <%= f.text_field :first_name %>
+    </div>
+　　<div class="form-group row">
+　　  <div class="col-2">
+　　    <%= f.label :フリガナ %>
+　　  </div>
+　　    <%= f.text_field :family_name_kana, class: "mr-5" %>
+        <%= f.text_field :first_name_kana %>
+    </div>
+　　<div class="form-group row">
+　　  <div class="col-2">
+　　    <%= f.label :郵便番号 %>
+　　  </div>
+　　    <%= f.text_field :postal_code %>
+    </div>
+　　<div class="form-group row">
+　　  <div class="col-2">
+　　    <%= f.label :住所 %>
+　　  </div>
+　　    <%= f.text_field :address, class: "col-9" %>
+    </div>
+    　　<div class="form-group row">
+　　  <div class="col-2">
+　　    <%= f.label :電話番号 %>
+　　  </div>
+　　    <%= f.text_field :telephone_number %>
+    </div>
+    　　<div class="form-group row">
+　　  <div class="col-2">
+　　    <%= f.label :メールアドレス %>
+　　  </div>
+　　    <%= f.text_field :email %>
+    </div>
+    <div class="row">
+      <div class="col-3"></div>
+      <%= f.submit "編集内容を保存", class: "col-3 btn btn-success mr-5" %>
+      <%= link_to "退会する", quit_path, class: "btn btn-danger" %>
+    </div>
 
   <% end %>
