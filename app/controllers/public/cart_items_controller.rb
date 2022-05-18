@@ -1,5 +1,5 @@
 class Public::CartItemsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_customer!
 
 
   def create
@@ -9,8 +9,9 @@ class Public::CartItemsController < ApplicationController
     else
       @cart_item = current_customer.cart_items.new(cart_item_params)
     end
-    
+
     if @cart_item.save
+      flash
       redirect_to items_path
     end
   end
