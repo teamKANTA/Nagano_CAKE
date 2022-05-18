@@ -1,5 +1,5 @@
 class Public::CartItemsController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
 
 
   def create
@@ -9,14 +9,14 @@ class Public::CartItemsController < ApplicationController
     else
       @cart_item = current_customer.cart_items.new(cart_item_params)
     end
-
+    
     if @cart_item.save
-      redirect_to orders_path
+      redirect_to items_path
     end
   end
 
   def index
-    #@cart_items = current_customer.cart_items
+     @cart_items = current_customer.cart_items
   end
 
   def update
@@ -31,8 +31,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def empty
-    @cart_items = current_customer.cart_items
-    @cart_items.destroy
+    current_customer.cart_items.destroy_all
     redirect_to cart_items_path
   end
 
