@@ -1,2 +1,17 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container">
+  <%= render "layouts/error_messages", model: @item%>
+  <div class="row">
+    <div class="col-xs-12">
+      <h5 class="p-3 mb-5 head-line title_h2 text-center bg-light"><strong>商品新規登録</strong></h5>
+    </div>
+  </div>
+  <div class="col-lg-8 mx-auto">
+    <%= form_with model: @item,url: admin_items_path, method: :post, local: :true do |f| %>
+      <%= render "form_item", f: f %>
+      <div class="text-center">
+  	  <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
+  	  </div>
+    <% end %>
+    </div>
+  </div>
+</div>
