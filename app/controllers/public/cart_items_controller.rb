@@ -11,7 +11,6 @@ class Public::CartItemsController < ApplicationController
     end
 
     if @cart_item.save
-      flash
       redirect_to items_path
     end
   end
