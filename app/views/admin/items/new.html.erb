@@ -18,7 +18,7 @@
       </div>
       <div class="form-group">
         <%= f.label :"ジャンル", class: "col-sm-3 control-label" %>
-        <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: "-- 選択してください --", class: "col-sm-9 genre_id") %>
+        <%= f.collection_select(:genre_id, @genres, :id, :name, prompt: " 選択してください ", class: "col-sm-9 genre_id") %>
       </div>
       <div class="form-group">
         <%= f.label :"税抜価格", class: "col-sm-3 control-label" %>
@@ -26,7 +26,10 @@
       </div>
       <div class="form-group">
         <%= f.label :"販売ステータス", class: "col-sm-3 control-label" %>
-        <%= f.select :is_active, [['販売中', true], ['販売停止', false]], prompt: "-- 選択してください --", class: "col-sm-9 is_active" %>
+        <%= f.radio_button :is_active, "true" %>
+        <%= f.label  "販売中" %>
+        <%= f.radio_button :is_active, "false" %>
+        <%= f.label  "販売停止中" %>
       </div>
   	      <%= f.submit "新規登録", class: "btn btn-primary btn-lg pull-right" %>
         </div>
