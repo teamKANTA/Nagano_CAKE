@@ -13,7 +13,7 @@ class Admin::ItemsController < ApplicationController
 
   def edit
   end
-  
+
   def create
     @genres = Genre.all
     @item = Item.new(item_params)
@@ -23,13 +23,13 @@ class Admin::ItemsController < ApplicationController
     else
       render "admin/items/new"
     end
-  end 
-  
+  end
+
   def update
-  end 
-  
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :is_active, :item_image, :genre_id)
-  end 
+  end
 end
