@@ -16,7 +16,7 @@
         <%= image_tag item.get_item_image(200,200) %><br>
     <% end %>
         <p><%= item.name %></p>
-        <p>¥<%= (item.with_tax_price).floor.to_s(:delimited) %></p> 
+        <p>¥<%= (item.with_tax_price).to_s(:delimited) %></p> 
         </div>
     <% end %>
  </div>
