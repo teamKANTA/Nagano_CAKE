@@ -23,12 +23,13 @@
                   <%= order.name %>
               </td>
               <td class="align-middle">
-              <!-- order.items.each do |item| -->
-              <!-- li item.name -->
-              イチゴのショートケーキ<br>
-              ガトーショコラ
+                <ul>
+                  <% order.items.each do |item| %>
+                    <li style="list-style: none;"><%= item.name %></li>
+                  <% end %>
+                </ul>
               </td>
-              <td class="align-middle">2.300円<!-- order.billing_amount --></td>
+              <td class="align-middle"><%= order.billing_amount %></td>
               <td class="align-middle"><%= order.order_status_i18n %></td>
               <td class="align-middle"><%= link_to "表示する", order_path(order), class: "btn btn-sm btn-primary" %></td>
             </tr>

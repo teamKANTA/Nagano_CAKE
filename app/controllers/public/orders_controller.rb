@@ -6,7 +6,15 @@ class Public::OrdersController < ApplicationController
 
   def confirmation
     @order = Order.new(order_params)
+    #送料（一律600円)
+    @order.shipping_fee = 600
+    #カートアイテム呼び出し
     @cart_items = current_customer.cart_items.all
+    #カートアイテム内合計金額
+    @cart_items_total = @cart_items.inject(0) {|sum, item| sum+item.subtotal}
+    #請求金額
+    @order.billing_amount = @order.shipping_fee + @cart_items_total
+    #newページで選択した支払方法を呼び出す
     @payment_method = @order.method_of_payment
     #会員に登録された住所
     if params[:order][:shipping_address] == "my_address"
@@ -25,23 +33,29 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    #送料（一律600円)
+    @order.shipping_fee = 600
+    #カートアイテム呼び出し
+    @cart_items = current_customer.cart_items.all
+    #カートアイテム内合計金額
+    @cart_items_total = @cart_items.inject(0) {|sum, item| sum+item.subtotal}
+    #請求金額
+    @order.billing_amount = @order.shipping_fee + @cart_items_total
     @order.customer_id = current_customer.id
     @order.save
 
-    @order_details = OrderDetails.new
-    @order_details.order_id = @order.id
-    @cart_items = current_customer.cart_items.all
-
-    #カート内アイテムの商品ごとにorder_detailを
-    #@cart_items.each do |cart_item|
-      #@order_details.item_id = cart_item.item.id
-      #@order_details.price = cart_items.price
-      #@order_details.quantity = cart_item.quantity
-      #@order_details.save!
-    #end
+    #カート内アイテムの商品ごとにorder_detailを登録
+    @cart_items.each do |cart_item|
+      @order_details = OrderDetail.new
+      @order_details.order_id = @order.id
+      @order_details.item_id = cart_item.item.id
+      @order_details.price = cart_item.item.price
+      @order_details.quantity = cart_item.quantity
+      @order_details.save!
+    end
 
     #カート内アイテムを全削除
-    #CartItem.destroy_all
+    CartItem.destroy_all
     redirect_to completed_path
   end
 
@@ -54,6 +68,9 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @items = @order.items
+    @order_details = OrderDetail.where(order_id: @order)
+    @total = @order.order_details.inject(0) {|sum, order_detail| sum + order_detail.subtotal}
   end
 
   private

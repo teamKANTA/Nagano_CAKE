@@ -33,20 +33,18 @@
         <h5>請求情報</h5>
         <table class="price table table-bordered">
           <tbody>
-            <tr>
               <tr>
                 <td class="col-5 bg-light">商品合計</td>
-                <td>1,500</td>
+                <td><%= @total %></td>
               </tr>
               <tr>
                 <td class="bg-light">配送料</td>
-                <td>800</td>
+                <td><%= @order.shipping_fee %></td>
               </tr>
               <tr>
                 <td class="bg-light">ご請求額</td>
-                <td>2,560</td>
+                <td><%= @order.billing_amount %></td>
               </tr>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -64,18 +62,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>チョコバナナミルフィーユ</th>
-            <td>1,100</td>
-            <td>1</td>
-            <td>1,100</td>
-          </tr>
-          <tr>
-            <td>チーズタルト</th>
-            <td>1,100</td>
-            <td>1</td>
-            <td>1,100</td>
-          </tr>
+          <% @order.order_details.each do |order_detail| %>
+            <tr>
+              <td><%= order_detail.item.name %></th>
+              <td><%= order_detail.item.with_tax_price %></td>
+              <td><%= order_detail.quantity %></td>
+              <td><%= order_detail.item.with_tax_price * order_detail.quantity %></td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
       </div>
