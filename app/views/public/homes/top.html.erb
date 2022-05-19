@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container mx-auto">
   <div class="row">
-    <div class="col-3">
+    <div class="col-2">
       <table class="table table-hover table-bordered" style="height:300px;">
         <thead>
           <tr>
@@ -20,7 +20,7 @@
         </tbody>
       </table>
     </div>
-    <div class="col-9">
+    <div class="col-10">
       <div style="background:url(/assets/toppage-cake.jpg); background-size:cover; height:300px; width: 700px;">
         <div style="background-color: rgba(255,255,255,0.75); height: 300px;">
           <h5 class=" d-flex justify-content-center align-items-center" style="height: 300px;">
@@ -36,7 +36,7 @@
         <% @items.each do |item| %>
           <div class="col-3">
             <%= link_to item_path(item), style: "color:black;" do %>
-              <p><%= image_tag item.get_item_image(200,100), style: "width: 150px; height: 100px;" %></p>
+              <p><%= image_tag item.get_item_image(200,100), style: "width: 180px; height: 150px;" %></p>
               <p><%= item.name %></p>
               <p>¥<%= item.with_tax_price %></p>
             <% end %>
