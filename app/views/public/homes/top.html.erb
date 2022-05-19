@@ -10,25 +10,38 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              ジャンルが入ります。
-            </td>
-          </tr>
+          <% @genre.each do |genre| %>
+            <tr>
+              <td>
+                <%= link_to items_path do %>
+                  <%= genre.name %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
     <div class="col-9">
-      <div style="background:url(/assets/aboutcake.jpg); background-size:cover; height:300px;">
-        <div  style="background-color: rgba(255,255,255,0.5); height: 300px;">
-          <p class="text-center" style="">
+      <div style="background:url(/assets/aboutcake.jpg); background-size:cover; height:300px; width: 700px;">
+        <div style="background-color: rgba(255,255,255,0.5); height: 300px;">
+          <h5 class=" d-flex justify-content-center align-items-center" style="height: 300px;">
             ようこそ！、ながのCAKEへ！<br>
             このサイトは、ケーキ販売のECサイトになります。<br>
             会員でない方も商品の閲覧はできますが、<br>
             購入には会員登録が必要になります。
-          </p>
+          </h5>
         </div>
       </div>
+      <h2 class="mt-3"><strong>新着商品</strong></h2>
+      <div class="">
+        <% @items.each do |item| %>
+          <%= image_tag item.get_item_image(100,100) %>
+        <% end %>
+      </div>
+      <p class="text-right">
+        <%= link_to "全ての商品を見る >", items_path %>
+      </p>
     </div>
   </div>
 </div>
