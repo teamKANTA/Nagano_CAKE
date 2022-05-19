@@ -3,14 +3,16 @@ class Public::CartItemsController < ApplicationController
 
 
   def create
-    @cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
+    @cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
     if @cart_item.present?
       @cart_item.quantity += params[:cart_item][:quantity].to_i
     else
       @cart_item = current_customer.cart_items.new(cart_item_params)
+      @cart_item.item_id = cart_item_params[:item_id]
     end
 
     if @cart_item.save
+      flash[:notice] = "カートに商品が追加されました。"
       redirect_to items_path
     end
   end
@@ -25,13 +27,14 @@ class Public::CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
-  def destroy
-    @cart_item = CartItem.find(parmas[:id])
-    @cart_item.destroy
-  end
-
   def empty
     current_customer.cart_items.destroy_all
+    redirect_to cart_items_path
+  end
+
+  def destroy
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
     redirect_to cart_items_path
   end
 
