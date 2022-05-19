@@ -5,11 +5,11 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirmation
+    #カートアイテム呼び出し
+    @cart_items = current_customer.cart_items.all
     @order = Order.new(order_params)
     #送料（一律600円)
     @order.shipping_fee = 600
-    #カートアイテム呼び出し
-    @cart_items = current_customer.cart_items.all
     #カートアイテム内合計金額
     @cart_items_total = @cart_items.inject(0) {|sum, item| sum+item.subtotal}
     #請求金額
@@ -28,7 +28,6 @@ class Public::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     end
-    @order.save
   end
 
   def create
@@ -42,21 +41,22 @@ class Public::OrdersController < ApplicationController
     #請求金額
     @order.billing_amount = @order.shipping_fee + @cart_items_total
     @order.customer_id = current_customer.id
-    @order.save
-
-    #カート内アイテムの商品ごとにorder_detailを登録
-    @cart_items.each do |cart_item|
-      @order_details = OrderDetail.new
-      @order_details.order_id = @order.id
-      @order_details.item_id = cart_item.item.id
-      @order_details.price = cart_item.item.price
-      @order_details.quantity = cart_item.quantity
-      @order_details.save!
-    end
-
+    if @order.save
+      #カート内アイテムの商品ごとにorder_detailを登録
+      @cart_items.each do |cart_item|
+        @order_details = OrderDetail.new
+        @order_details.order_id = @order.id
+        @order_details.item_id = cart_item.item.id
+        @order_details.price = cart_item.item.price
+        @order_details.quantity = cart_item.quantity
+        @order_details.save!
+      end
     #カート内アイテムを全削除
     CartItem.destroy_all
     redirect_to completed_path
+    else
+      render :confirmation
+    end
   end
 
   def completed
