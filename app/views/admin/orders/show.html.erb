@@ -58,7 +58,17 @@
             <td>1,320</td>
             <td>1</td>
             <td>1,320</td>
-            <td>着手不可 更新</td>
+            <td>
+              <%= form_with model: @order_detail, url: admin_order_detail_path, method: :patch do |f|%>
+                <%= f.select :order_status, {
+                  "着手不可": OrderDetail.production_statuses.key(0),
+                  "製作待ち": OrderDetail.production_statuses.key(1),
+                  "製作中": OrderDetail.production_statuses.key(2),
+                  "製作官僚": OrderDetail.production_statuses.key(3),
+                  }  %>
+                <%= f.submit "更新", class: "btn btn-success ml-3" %>
+              <% end %>
+            </td>
           </tr>
           <!-- end -->
         </tbody>

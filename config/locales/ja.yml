@@ -16,3 +16,9 @@
           production: "製作中"
           preparation: "発送準備中"
           shipped: "発送済み"
+
+      production_status:
+          pending: "着手不可"
+          waiting_for_production: "製作待ち"
+          working: "製作中"
+          completed: "製作完了"
