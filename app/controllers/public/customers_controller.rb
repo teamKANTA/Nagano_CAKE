@@ -12,13 +12,16 @@ class Public::CustomersController < ApplicationController
 
   def update
     if current_customer.update(customer_params)
-      redirect_to customer_path
+      redirect_to customer_path, notice: "会員情報を更新しました。"
     else
       render "edit"
     end
   end
 
   def withdraw
+    current_customer.update(is_deleted: true)
+    reset_session
+    redirect_to root_path, notice: "退会しました"
   end
 
   private
