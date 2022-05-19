@@ -6,13 +6,13 @@ class Public::OrdersController < ApplicationController
 
   def confirmation
     @order = Order.new(order_params)
-    @customer = current_customer
+    @cart_items = current_customer.cart_items.all
     @payment_method = @order.method_of_payment
     #会員に登録された住所
     if params[:order][:shipping_address] == "my_address"
-      @order.postal_code = @customer.postal_code
-      @order.address = @customer.address
-      @order.name = @customer.family_name + @customer.first_name
+      @order.postal_code = current_customer.postal_code
+      @order.address = current_customer.address
+      @order.name = current_customer.family_name + current_customer.first_name
     #登録済み住所から選択された住所
     elsif params[:order][:shipping_address] == "registered_address"
       @address = ShippingAddress.find(params[:order][:address_id])
@@ -28,9 +28,9 @@ class Public::OrdersController < ApplicationController
     @order.customer_id = current_customer.id
     @order.save
 
-    #@order_details = OrderDetails.new
-    #@order_details.order_id = @order.id
-    #cart_items = current_customer.cart_items.all
+    @order_details = OrderDetails.new
+    @order_details.order_id = @order.id
+    @cart_items = current_customer.cart_items.all
 
     #カート内アイテムの商品ごとにorder_detailを
     #@cart_items.each do |cart_item|

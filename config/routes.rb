@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
     get 'orders/completed', as: 'completed'
     post 'orders/confirmation', as: 'confirmation'
-    resources :orders, only: [:new, :create, :indexm, :show]
+    resources :orders, only: [:new, :create, :index, :show]
   end
 
 
