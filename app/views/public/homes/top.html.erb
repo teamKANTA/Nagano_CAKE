@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
-      <table class="table table-bordered" style="height:300px;">
+      <table class="table table-hover table-bordered" style="height:300px;">
         <thead>
           <tr>
             <th class="text-center">
@@ -13,9 +13,7 @@
           <% @genres.each do |genre| %>
             <tr>
               <td style="border:none;">
-                <%= link_to do %>
-                  <%= genre.name %>
-                <% end %>
+                <%= link_to genre.name, search_items_path(genre.id), method: :get,class: "text-dark" %>
               </td>
             </tr>
           <% end %>
