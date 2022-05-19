@@ -27,6 +27,21 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
+    
+    #@order_details = OrderDetails.new
+    #@order_details.order_id = @order.id
+    #cart_items = current_customer.cart_items.all
+
+    #カート内アイテムの商品ごとにorder_detailを
+    #@cart_items.each do |cart_item|
+      #@order_details.item_id = cart_item.item.id
+      #@order_details.price = cart_items.price
+      #@order_details.quantity = cart_item.quantity
+      #@order_details.save!
+    #end
+    
+    #カート内アイテムを全削除
+    #CartItem.destroy_all
     redirect_to completed_path
   end
 
