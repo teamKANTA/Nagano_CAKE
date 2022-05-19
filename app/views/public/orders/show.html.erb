@@ -1,2 +1,84 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container px-4">
+  <h3 class="bg-light d-inline-block px-4 mx-5">注文履歴詳細</h3>
+
+  <div class="container my-5">
+    <div class="row mb-4">
+      <div class="order_details col-7">
+        <h5>注文情報</h5>
+        <table class="items table table-bordered">
+          <tbody>
+            <tr>
+              <td class="col-3 bg-light">注文日</td>
+              <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+            </tr>
+            <tr>
+              <td class="bg-light">配送先</td>
+            <td>〒<%= @order.postal_code %><br>
+              <%= @order.address %><br>
+              <%= @order.name %>
+              </td>
+            </tr>
+            <tr>
+              <td class="bg-light">支払方法</td>
+              <td><%= @order.method_of_payment_i18n %></td>
+            </tr>
+          <tr>
+              <td class="bg-light">ステータス</td>
+              <td><%= @order.order_status_i18n %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="order_bills col-4 ml-5">
+        <h5>請求情報</h5>
+        <table class="price table table-bordered">
+          <tbody>
+            <tr>
+              <tr>
+                <td class="col-5 bg-light">商品合計</td>
+                <td>1,500</td>
+              </tr>
+              <tr>
+                <td class="bg-light">配送料</td>
+                <td>800</td>
+              </tr>
+              <tr>
+                <td class="bg-light">ご請求額</td>
+                <td>2,560</td>
+              </tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+    <div class="order_items col-10">
+      <h5>注文内容</h5>
+      <table class="items table table-bordered">
+        <thead>
+          <tr class="bg-light">
+            <td class="col-4">商品名</td>
+            <td>単価(税込)</td>
+            <td>数量　　</td>
+            <td>小計　　</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>チョコバナナミルフィーユ</th>
+            <td>1,100</td>
+            <td>1</td>
+            <td>1,100</td>
+          </tr>
+          <tr>
+            <td>チーズタルト</th>
+            <td>1,100</td>
+            <td>1</td>
+            <td>1,100</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>

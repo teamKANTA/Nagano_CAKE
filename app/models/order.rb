@@ -9,5 +9,5 @@ class Order < ApplicationRecord
 
   enum method_of_payment: {credit_card: 0, transfer: 1}
   enum shipping_address: {my_address: 0, registered_address: 1, new_address: 2}
-
+  enum order_status: {customer_payment: 0, payment_confirmed: 1, production: 2, preparation: 3, shipped: 4}
 end
