@@ -1,5 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def index
+    @items = Item.all.page(params[:page]).per(10)
   end
 
   def show
@@ -17,7 +18,7 @@ class Admin::ItemsController < ApplicationController
     @genres = Genre.all
     @item = Item.new(item_params)
     if @item.save
-      flash[:notice] = "新商品を登録しました"
+      flash[:success] = "新商品を登録しました"
       redirect_to admin_items_path
     else
       render "admin/items/new"
