@@ -26,7 +26,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
+      get :search, on: :collection
+    end
 
     resource :customer, only: [:show, :edit, :update]
     get 'customers/quit', as: 'quit'
