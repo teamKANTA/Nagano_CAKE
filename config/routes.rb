@@ -33,9 +33,10 @@ Rails.application.routes.draw do
     patch 'customers/withdraw', as: 'withdraw'
 
     resources :shipping_addresses, only: [:create, :index, :edit, :update, :destroy]
-
-    resources :cart_items, only: [:index, :create, :update, :destroy]
+    
     delete 'cart_items/empty', as: 'empty'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+
 
     resources :orders, only: [:new, :create, :index, :show]
     get 'orders/completed', as: 'completed'
