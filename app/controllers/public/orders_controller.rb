@@ -27,7 +27,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
-    
+
     #@order_details = OrderDetails.new
     #@order_details.order_id = @order.id
     #cart_items = current_customer.cart_items.all
@@ -39,7 +39,7 @@ class Public::OrdersController < ApplicationController
       #@order_details.quantity = cart_item.quantity
       #@order_details.save!
     #end
-    
+
     #カート内アイテムを全削除
     #CartItem.destroy_all
     redirect_to completed_path
@@ -55,11 +55,11 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
   end
-  
+
   private
   def order_params
     params.require(:order).permit(:method_of_payment, :shipping_address, :postal_code, :address, :name)
   end
 
-  
+
 end
