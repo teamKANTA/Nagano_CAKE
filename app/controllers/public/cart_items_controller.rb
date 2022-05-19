@@ -13,12 +13,12 @@ class Public::CartItemsController < ApplicationController
 
     if @cart_item.save
       flash[:notice] = "カートに商品が追加されました。"
-      redirect_to items_path
+      redirect_to cart_items_path
     end
   end
 
   def index
-     @cart_items = current_customer.cart_items
+    @cart_items = current_customer.cart_items
   end
 
   def update
