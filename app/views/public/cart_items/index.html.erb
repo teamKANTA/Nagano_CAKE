@@ -1,12 +1,13 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-10">
-      <% if @cart_items.present? %>
-        <h3 class="bg-light d-inline-block px-4 mx-5">ショッピングカート</h3>
+  <div class="row justify-content-center">
+    <% if @cart_items.present? %>
+
+      <div class="col-11">
+        <h3 class="bg-light d-inline-block px-4 mx-2">ショッピングカート</h3>
         <div class="d-inline-block float-right">
           <%= link_to "カートを空にする", empty_path, method: :delete, class: "btn btn-sm btn-danger px-3" %>
         </div>
-        <table class="table table-bordered">
+        <table class="table table-bordered mt-4">
           <thead>
             <tr class="bg-light">
               <th>商品名</th>
@@ -20,7 +21,10 @@
             <% @total_price = 0 %>
             <% @cart_items.each do |cart_item| %>
               <tr>
-                <td class="align-middle"><%= image_tag cart_item.item.get_item_image(100,70) %>  <%= cart_item.item.name %></td>
+                <td class="align-middle">
+                  <%= image_tag cart_item.item.get_item_image(100,70) %>
+                  <%= cart_item.item.name %>
+                </td>
                 <td class="align-middle">¥<%= cart_item.item.with_tax_price %></td>
                 <td class="align-middle">
                   <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
@@ -35,10 +39,13 @@
             <% end %>
           </tbody>
         </table>
-        <div class="d-inline-block">
+      </div>
+
+      <div class="col-11 mt-3">
+        <div class="d-inline-block ml-5">
           <%= link_to "買い物を続ける", items_path, class: "btn btn-sm btn-primary px-3 py-2" %>
         </div>
-        <div class="d-inline-block float-right" style="width: 35%;">
+        <div class="d-inline-block float-right" style="width: 30%;">
           <table class="table table-bordered">
             <thead>
               <tr>
@@ -50,13 +57,19 @@
             </thead>
           </table>
         </div>
+      </div>
+
+      <div class="col-11 mt-5">
         <div class="text-center">
-          <%= link_to "情報入力に進む", orders_path, class: "btn btn-success" %>
+          <%= link_to "情報入力に進む", orders_path, class: "btn btn-lg btn-success" %>
         </div>
-      <% else %>
+      </div>
+
+    <% else %>
+      <div class="col-11">
         <h3 class="bg-light d-inline-block px-4 mx-5 mt-3">ショッピングカート</h3>
-        <p class="px-4 mx-5 mt-4">カートに追加した商品がありません。</p>
-      <% end %>
-    </div>
+        <p class="px-4 mx-5 mt-4">カートに商品はありません。</p>
+      </div>
+    <% end %>
   </div>
 </div>
