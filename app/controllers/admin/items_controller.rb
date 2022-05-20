@@ -29,6 +29,7 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
+    @genres = Genre.all
     if @item.update(item_params)
       flash[:notice] ="商品情報を更新しました"
       redirect_to admin_items_path
