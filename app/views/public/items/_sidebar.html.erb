@@ -6,7 +6,7 @@
     <% genres.each do |genre| %>
       <tbody>
         <td>
-          <%= link_to genre.name, search_items_path(genre.id), method: :get,class: "text-dark" %>
+          <%= link_to genre.name, search_items_path(genre),class: "text-dark" %>
         </td>
       </tbody>
     <% end %>
