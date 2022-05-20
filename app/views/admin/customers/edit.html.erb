@@ -1,7 +1,7 @@
 <div class="container my-4">
   <h3 class="bg-light d-inline-block px-4 mx-5 mb-3"><%= @customer.family_name %><%= @customer.first_name %>さんの会員情報編集</h3>
 
-  <%= form_with model:@customer do |f| %>
+  <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
 
   <div class="form-group-row d-flex">
     <div class="col-2">会員ID</div>
