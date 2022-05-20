@@ -12,8 +12,10 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    @genres = Genre.all
   end
-  
+
   def create
     @genres = Genre.all
     @item = Item.new(item_params)
@@ -23,13 +25,20 @@ class Admin::ItemsController < ApplicationController
     else
       render "admin/items/new"
     end
-  end 
-  
+  end
+
   def update
-  end 
-  
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      flash[:notice] ="商品情報を更新しました"
+      redirect_to admin_items_path
+    else
+      render :edit
+    end 
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :is_active, :item_image, :genre_id)
-  end 
+  end
 end
