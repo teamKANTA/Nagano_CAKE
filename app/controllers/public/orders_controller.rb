@@ -7,7 +7,7 @@ class Public::OrdersController < ApplicationController
   def confirmation
     #カートアイテム呼び出し
     @cart_items = current_customer.cart_items.all
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new
     #送料（一律600円)
     @order.shipping_fee = 600
     #カートアイテム内合計金額
@@ -27,6 +27,14 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
+    elsif params[:order][:shipping_address] == "new_address"
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
+    end
+    if @order.invalid?
+      @customer = current_customer
+      render "new"
     end
   end
 
