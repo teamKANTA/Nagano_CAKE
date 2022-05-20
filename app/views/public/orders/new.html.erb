@@ -23,7 +23,7 @@
 
       <!--会員情報に登録されている住所-->
       <div class="form">
-        <%= f.radio_button :shipping_address, Order.shipping_addresses.key(0) %>
+        <%= f.radio_button :shipping_address, Order.shipping_addresses.key(0), checked: "checked" %>
         <%= f.label :shipping_address, Order.shipping_addresses_i18n[:my_address] %><br>
         <p class="ml-4">〒<%= @customer.postal_code %> <%= @customer.address %><br>
         <%= @customer.family_name %><%= @customer.first_name %>
@@ -35,7 +35,11 @@
         <%= f.radio_button :shipping_address, Order.shipping_addresses.key(1) %>
         <%= f.label :shipping_address, Order.shipping_addresses_i18n[:registered_address] %>
         <div class="form ml-4">
-          <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %>
+          <% if @customer.shipping_addresses.any? %>
+            <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %>
+          <% else %>
+            <p>　登録済み住所はありません</p>
+          <% end %>
         </div>
       </div>
 
