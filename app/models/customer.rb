@@ -16,5 +16,15 @@ class Customer < ApplicationRecord
   validates :postal_code, presence: true, length: {maximum: 7}
   validates :address, presence: true
   validates :telephone_number, presence: true, length: {maximum: 11}
+  
+  def self.looks(search, word)
+    if search == "完全一致"
+      @customer = Customer.where("family_name_kana LIKE?", "#{word}")
+    elsif search == "曖昧検索"
+      @customer = Customer.where("family_name_kana LIKE?", "%#{word}%")
+    else
+      @customer = Customer.all
+    end
+  end
 
 end

@@ -15,16 +15,34 @@
         <li class="nav-link border px-3 ml-4"><%= link_to "商品一覧", items_path %></li>
         <li class="nav-link border px-3 ml-4"><%= link_to "カート", cart_items_path %></li>
         <li class="nav-link border px-3 ml-4"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+        <% elsif admin_signed_in? %>
+        <li class="nav-link border px-3"><%= link_to "商品一覧", admin_items_path %></li>
+        <li class="nav-link border px-3 ml-4"><%= link_to "会員一覧", admin_customers_path %></li>
+        <li class="nav-link border px-3 ml-4"><%= link_to "注文履歴一覧", admin_orders_path %></li>
+        <li class="nav-link border px-3 ml-4"><%= link_to "ジャンル一覧", admin_genres_path %></li>
+        <li class="nav-link border px-3 ml-4"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
         <% else %>
         <li class="nav-link border px-3"><%= link_to "About", about_path %></li>
         <li class="nav-link border px-3 ml-4"><%= link_to "商品一覧", items_path %></li>
         <li class="nav-link border px-3 ml-4"><%= link_to "新規登録", new_customer_registration_path %></li>
         <li class="nav-link border px-3 ml-4"><%= link_to "ログイン", new_customer_session_path %></li>
         <% end %>
-
       </ul>
+
       <div class="search_form mt-2">
-        <input value="Search" class="form-control">
+        <% if admin_signed_in? %>
+          <%= form_with method: :get, url: admin_search_path do |f| %>
+            <%= f.select :search, options_for_select([["完全一致"], ["曖昧検索"]]) %>
+            <%= f.select :range, options_for_select([["商品"], ["会員(姓カナ)"],["ジャンル"]]) %>
+            <%= f.text_field :word, class: "form-control", placeholder: "Search" %>
+          <% end %>
+        <% else %>
+          <%= form_with method: :get, url: search_path do |f| %>
+            <%= f.hidden_field :range, :value => "商品" %>
+            <%= f.hidden_field :search, :value => "曖昧検索" %>
+            <%= f.text_field :word, class: "form-control", placeholder: "Search" %>
+          <% end %>
+        <% end %>
       </div>
     </div>
   </div>

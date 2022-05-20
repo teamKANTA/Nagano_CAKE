@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -21,12 +20,16 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
 
     resources :order_details, only: [:update]
+
+    get "search" => "searches#search"
   end
 
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
+      get :search, on: :collection
+    end
 
     resource :customer, only: [:show, :edit, :update]
     get 'customers/quit', as: 'quit'
@@ -34,12 +37,15 @@ Rails.application.routes.draw do
 
     resources :shipping_addresses, only: [:create, :index, :edit, :update, :destroy]
 
-    resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items/empty', as: 'empty'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+
 
     resources :orders, only: [:new, :create, :index, :show]
     get 'orders/completed', as: 'completed'
     post 'orders/confirmation', as: 'confirmation'
+
+    get 'search' => 'searches#search'
   end
 
 
