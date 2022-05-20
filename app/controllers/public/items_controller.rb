@@ -10,13 +10,13 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
     @genres = Genre.all
   end
-  
+
   def search
     #binding.pry
-    @items = Item.where(genre_id: params[:format]).page(params[:page]).per(8) 
+    @items = Item.where(genre_id: params[:format]).page(params[:page]).per(8)
     @quantity = Item.where(genre_id: params[:format]).count
     @genres = Genre.all
     @genre = Genre.find(params[:format])
-    render 'index' 
+    render 'index'
   end
 end
