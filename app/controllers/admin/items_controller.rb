@@ -4,6 +4,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def new
@@ -12,6 +13,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    @genres = Genre.all
   end
 
   def create
@@ -26,6 +29,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
+
   end
 
   private
