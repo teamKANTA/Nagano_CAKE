@@ -2,22 +2,23 @@
 <div class="container－fluid takasa mb-5">
   <div class="row">
     <%= render "public/items/sidebar", genres: @genres %>
-  <div class="col-lg-7">
-    <h2>商品(<%= params[:word] %>)一覧<span style="font-size:20px;">（全<%= @quantity %>件）</span></h2><br>
-    <div class="row">
-      <% @items.each do |item| %>
-        <div class="box" style="float:left; margin-right:20px;">
-          <%= link_to item_path(item.id) do %>
-            <%= image_tag item.get_item_image(200,200) %><br>
-          <% end %>
-          <p><%= item.name %></p>
-          <p>¥<%= (item.with_tax_price).to_s(:delimited) %></p>
+    <div class="col-lg-7">
+      <h2>商品(<%= params[:word] %>)一覧<span style="font-size:20px;">（全<%= @quantity %>件）</span></h2><br>
+      <div class="row">
+        <% @items.each do |item| %>
+          <div class="box" style="float:left; margin-right:20px;">
+            <%= link_to item_path(item.id) do %>
+              <%= image_tag item.get_item_image(200,200) %><br>
+            <% end %>
+            <p><%= item.name %></p>
+            <p>¥<%= (item.with_tax_price).to_s(:delimited) %></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <div class="mx-auto">
+          <%= paginate @items %>
         </div>
-      <% end %>
-    </div>
-    <div class="row">
-      <div class="mx-auto">
-        <%= paginate @items %>
       </div>
     </div>
   </div>
