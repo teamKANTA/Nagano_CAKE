@@ -1,8 +1,6 @@
 <div class="container－fluid takasa">
   <div class="row">
     <%= render "sidebar", genres: @genres %>
-  
-  
      <div class="col-lg-7">
         <% if params[:format] %>
           <h2><%= @genre.name %>一覧<span style="font-size:20px;">（全<%= @quantity %>件）</span></h2><br>

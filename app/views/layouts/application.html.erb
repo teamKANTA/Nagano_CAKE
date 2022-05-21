@@ -13,8 +13,10 @@
   <body>
     <header>
       <%= render "layouts/header", customer: current_customer %>
-    </header>    
-    <%= render "layouts/flash_message" %>
-    <%= yield %>
+    </header>
+    <main>
+      <%= render "layouts/flash_message" %>
+      <%= yield %>
+    </main>
   </body>
 </html>
