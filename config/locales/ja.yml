@@ -23,12 +23,47 @@ ja:
 
 #ここから下はデフォルト
   activerecord:
+    models:
+      shipping_address: 配送先
+      item: 商品
+      order: 注文
+      cart_item: カート
+      genres: ジャンル
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    attributes:
+      item:
+        name: 商品名
+        introduction: 商品説明文
+        price: 価格(税抜)
+        genre: ジャンル
+      customer:
+        family_name: 名字
+        first_name: 名前
+        family_name_kana: 名字(カナ)
+        first_name_kana: 名前(カナ)
+        postal_code: 郵便番号
+        address: 住所
+        telephone_number: 電話番号
+        email: メールアドレス
+        encrypted_password: パスワード
+        password: パスワード
+      shipping_address:
+        postal_code: 郵便番号
+        address: 住所
+        name: 配送先名
+      order:
+        address: 住所
+        postal_code: 郵便番号
+        name: 配送先名
+      genre:
+        name: ジャンル名
+
+
   date:
     abbr_day_names:
     - 日
@@ -39,7 +74,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -65,7 +100,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
