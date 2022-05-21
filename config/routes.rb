@@ -41,9 +41,9 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
 
 
-    resources :orders, only: [:new, :create, :index, :show]
     get 'orders/completed', as: 'completed'
     post 'orders/confirmation', as: 'confirmation'
+    resources :orders, only: [:new, :create, :index, :show]
 
     get 'search' => 'searches#search'
   end

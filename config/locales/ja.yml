@@ -1,0 +1,24 @@
+ ja:
+    enums:
+      order:
+        method_of_payment:
+          credit_card: "クレジットカード"
+          transfer: "銀行振込"
+
+        shipping_address:
+          my_address:   "ご自身の住所"
+          registered_address: "登録済住所から"
+          new_address: "新しいお届け先"
+
+        order_status:
+          customer_payment: "入金待ち"
+          payment_confirmed: "入金確認"
+          production: "製作中"
+          preparation: "発送準備中"
+          shipped: "発送済み"
+
+      production_status:
+          pending: "着手不可"
+          ready: "製作待ち"
+          working: "製作中"
+          completed: "製作完了"
