@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+  
   def new
     @order = Order.new
     @customer = current_customer
@@ -15,7 +17,7 @@ class Public::OrdersController < ApplicationController
     #請求金額
     @order.billing_amount = @order.shipping_fee + @cart_items_total
     #newページで選択した支払方法を呼び出す
-    @payment_method = @order.method_of_payment
+    @order.method_of_payment = params[:order][:method_of_payment]
     #会員に登録された住所
     if params[:order][:shipping_address] == "my_address"
       @order.postal_code = current_customer.postal_code

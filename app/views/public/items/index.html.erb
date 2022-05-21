@@ -1,4 +1,4 @@
-<div class="container－fluid takasa">
+<div class="container">
   <div class="row">
     <%= render "sidebar", genres: @genres %>
      <div class="col-lg-7">
@@ -11,10 +11,14 @@
       	<% @items.each do |item| %>
           <div class="box" style="float:left; margin-right:20px;">
             <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_item_image(200,200) %><br>
+              <%= image_tag item.get_item_image(200,200), style: "width: 180px; height: 150px;" %><br>
             <% end %>
             <p><%= item.name %></p>
-            <p>¥<%= (item.with_tax_price).to_s(:delimited) %></p> 
+            <% if item.is_active == true %>
+              <p>¥<%= (item.with_tax_price).to_s(:delimited) %></p> 
+            <% else %>
+              <p class="text-danger">売り切れ中</p>
+            <% end %>
           </div>
         <% end %>
        </div>

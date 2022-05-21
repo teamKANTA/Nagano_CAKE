@@ -21,6 +21,12 @@ class Admin::CustomersController < ApplicationController
       render "edit"
     end
   end
+  
+  def orders
+    @customer = Customer.find(params[:customer_id])
+    @customer_name = @customer.family_name + @customer.first_name
+    @orders = @customer.orders.page(params[:page])
+  end
 
   private
 

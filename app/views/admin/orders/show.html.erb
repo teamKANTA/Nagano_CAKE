@@ -30,7 +30,7 @@
                 "入金待ち": Order.order_statuses.key(0),
                 "入金確認": Order.order_statuses.key(1),
                 "製作中":  Order.order_statuses.key(2),
-                "発送準備":  Order.order_statuses.key(3),
+                "発送準備中":  Order.order_statuses.key(3),
                 "発送済み":  Order.order_statuses.key(4)
                 }  %>
               <%= f.submit "更新", class: "btn btn-success ml-3" %>
@@ -55,9 +55,9 @@
           <% @order.order_details.each do |order_detail| %>
           <tr>
             <td><%= order_detail.item.name %></td>
-            <td><%= order_detail.item.with_tax_price %></td>
+            <td>￥<%= order_detail.item.with_tax_price.to_s(:delimited) %></td>
             <td><%= order_detail.quantity %></td>
-            <td><%= order_detail.subtotal %></td>
+            <td>￥<%= order_detail.subtotal.to_s(:delimited) %></td>
             <td>
               <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch do |f|%>
                 <%= f.select :production_status, {
@@ -77,15 +77,15 @@
         <table class="table table-borderless">
           <tr>
             <th>商品合計</th>
-            <td class="text-right"><%= @total %> 円</td>
+            <td class="text-right">￥<%= @total.to_s(:delimited) %></td>
           </tr>
           <tr>
             <th>送料</th>
-            <td class="text-right"><%= @order.shipping_fee %> 円</td>
+            <td class="text-right">￥<%= @order.shipping_fee.to_s(:delimited) %></td>
           </tr>
           <tr>
             <th>請求金額合計</th>
-            <th class="text-right"><%= @order.billing_amount %> 円</th>
+            <th class="text-right">￥<%= @order.billing_amount.to_s(:delimited) %></th>
           </tr>
         </table>
       </div>
