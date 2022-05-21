@@ -3,11 +3,14 @@
 <div class="container my-4">
   <h3 class="bg-light d-inline-block px-4 mx-5 mb-5">配送先登録/一覧</h3>
 
-  <div class="mb-5">
+
+  <div class="mb-5" id="new">
     <%= render "new_form", address_date: @address_date %>
   </div>
 
-  <%= render "index", address_dates: @address_dates %>
+  <div id="index">
+    <%= render "index", address_dates: @address_dates %>
+  </div>
 
 
 </div>
