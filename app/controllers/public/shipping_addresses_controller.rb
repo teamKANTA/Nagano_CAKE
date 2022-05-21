@@ -15,7 +15,7 @@ class Public::ShippingAddressesController < ApplicationController
     if @address_date.save
       redirect_to shipping_addresses_path, notice: "配送先を登録しました。"
     else
-      @address_dates = current_customer.shippinn_addresses
+      @address_dates = current_customer.shipping_addresses
       render "index"
     end
   end
