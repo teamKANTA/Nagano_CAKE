@@ -28,7 +28,7 @@ ja:
       item: 商品
       order: 注文
       cart_item: カート
-      genres: ジャンル
+      genre: ジャンル
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
