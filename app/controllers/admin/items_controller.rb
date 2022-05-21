@@ -1,6 +1,7 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
   def index
-    @items = Item.all.page(params[:page]).per(10)
+    @items = Item.all.page(params[:page]).per(9)
   end
 
   def show
@@ -22,7 +23,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       flash[:success] = "新商品を登録しました"
-      redirect_to admin_items_path
+      redirect_to admin_item_path(@item)
     else
       render "admin/items/new"
     end
@@ -36,7 +37,7 @@ class Admin::ItemsController < ApplicationController
       redirect_to admin_items_path
     else
       render :edit
-    end 
+    end
   end
 
   private

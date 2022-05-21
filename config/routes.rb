@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update] do
+      get "orders" => "customers#orders"
+    end
 
     resources :genres, only: [:index, :create, :edit, :update]
 
@@ -41,9 +43,9 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
 
 
-    resources :orders, only: [:new, :create, :index, :show]
     get 'orders/completed', as: 'completed'
     post 'orders/confirmation', as: 'confirmation'
+    resources :orders, only: [:new, :create, :index, :show]
 
     get 'search' => 'searches#search'
   end
