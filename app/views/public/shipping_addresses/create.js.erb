@@ -1,3 +1,3 @@
 $('.js-form')[0].reset();
-$('#erorre').html("<%= j(render 'layouts/error_messages', model: @address_date) %>");
+$('#error').html("<%= j(render 'layouts/error_messages', model: @address_date) %>");
 $('#index').html("<%= j(render "index", address_dates: @address_dates) %>");
