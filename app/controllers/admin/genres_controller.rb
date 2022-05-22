@@ -10,9 +10,8 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     @genres = Genre.all
-    flash[:notice] = "ジャンルを作成しました"
     if @genre.save
-      
+      flash[:notice] = "ジャンルを作成しました"
     end 
   end 
   
