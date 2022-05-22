@@ -1,0 +1,32 @@
+body{
+  font-family: "Helvetica", "Montserrat", "Courier New", "Segoe UI", sans-serif;
+}
+
+
+.bg-orange{
+  background-color: #eb6101;
+  color: white;
+}
+
+.bg-orange-dark{
+  background-color: #cd6d22;
+  color: white;
+}
+
+.bg-brown{
+  background-color: #8a3b00;
+  color: white;
+}
+
+
+.orange{
+  color: #eb6101;
+}
+
+.orange-dark{
+  color: #cd6d22;
+}
+
+.brown{
+  color: #8a3b00;
+}
