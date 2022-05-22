@@ -18,6 +18,16 @@ body{
   color: white;
 }
 
+.bg-dark-brown{
+  background-color: #9f6f55;
+  color: white;
+}
+
+.bg-light-brown{
+  background-color: #F4EBE4;
+  color: white;
+}
+
 
 .orange{
   color: #eb6101;
@@ -30,3 +40,8 @@ body{
 .brown{
   color: #8a3b00;
 }
+
+.dark-brown{
+  color: #9f6f55;
+}
+
