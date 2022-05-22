@@ -15,7 +15,7 @@
           <u class="text-dark"><%= item.name %></u>
         <% end %>
       </td>
-      <td><%= item.price %></td>
+      <td>￥<%= item.price.to_s(:delimited) %></td>
       <td><%= item.genre.name %></td>
       <% if item.is_active == true %>
         <td><p class="text-success">販売中</p></td>
