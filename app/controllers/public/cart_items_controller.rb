@@ -14,6 +14,8 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.save
       flash[:notice] = "カートに商品が追加されました。"
       redirect_to cart_items_path
+    else
+      redirect_to request.referer, notice: "個数を選択してください"
     end
   end
 
