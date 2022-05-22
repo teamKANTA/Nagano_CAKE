@@ -1,12 +1,11 @@
-<div class="container px-4">
+<div class="container my-4">
   <%= render "layouts/error_messages", model: @order %>
-  <h3 class="bg-light d-inline-block px-4 mx-5">注文情報入力</h3>
+  <h3 class="d-inline-block px-4 mx-5 mb-3 bg-orange">注文情報入力</h3>
 
   <div class="container my-4">
-
     <%= form_with model: @order, url: confirmation_path, method: :post do |f|%>
 
-    <h4 class="font-weight-bolder">支払方法</h4>
+    <h4 class="font-weight-bolder d-inline-block px-2 bg-light-brown">支払方法</h4>
     <div class="payment_method ml-5">
       <div class="form">
         <%= f.radio_button :method_of_payment, Order.method_of_payments.key(0) %>
@@ -19,7 +18,7 @@
     </div>
 
 
-    <h4 class="font-weight-bolder mt-3">お届け先</h4>
+    <h4 class="font-weight-bolder d-inline-block px-2 bg-light-brown mt-3">お届け先</h4>
     <div class="shipping_address ml-5">
 
       <!--会員情報に登録されている住所-->
@@ -41,7 +40,7 @@
           </div>
         <% end %>
       </div>
-      
+
 
       <!--新しく住所を入力する-->
       <div class="form mt-3">
@@ -72,7 +71,7 @@
 
     </div>
     <div class="actions d-flex justify-content-center">
-        <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+        <%= f.submit "確認画面へ進む", class: "btn bg-dark-brown" %>
     </div>
 
     <% end %>

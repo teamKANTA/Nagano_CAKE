@@ -1,73 +1,75 @@
 <div class="container my-4">
-  <h3 class="bg-light d-inline-block px-4 mx-5 mb-3">マイページ</h3>
+  <h3 class="d-inline-block px-4 mx-5 mb-3 bg-orange">マイページ</h3>
 
-  <div class="row mb-3">
-   <h3 class="col-2 mr-3" >登録情報</h2>
-   <%= link_to "編集する", edit_customer_path, class:"col-1 btn btn-success" %>
+  <div class="ml-4">
+    <div class="row my-3">
+     <h3 class="col-2">登録情報</h3>
+     <%= link_to "編集する", edit_customer_path, class: "btn btn-danger ml-5" %>
+    </div>
+
+    <div class="row mb-3 ml-4">
+      <table class="col-6 table table-bordered mb-5">
+        <tr>
+          <th class="bg-light-brown col-4">
+            氏名
+          </th>
+          <td>
+            <%= current_customer.family_name %> <%= current_customer.first_name %>
+          </td>
+        </tr>
+        <tr>
+          <th class="bg-light-brown">
+            カナ
+          </th>
+          <td>
+            <%= current_customer.family_name_kana %> <%= current_customer.first_name_kana %>
+          </td>
+        </tr>
+        <tr>
+          <th class="bg-light-brown">
+            郵便番号
+          </th>
+          <td>
+            <%= current_customer.postal_code %>
+          </td>
+        </tr>
+        <tr>
+          <th class="bg-light-brown">
+            住所
+          </th>
+          <td>
+            <%= current_customer.address %>
+          </td>
+        </tr>
+        <tr>
+          <th class="bg-light-brown">
+            電話番号
+          </th>
+          <td>
+            <%= current_customer.telephone_number %>
+          </td>
+        </tr>
+        <tr>
+          <th class="bg-light-brown">
+            メールアドレス
+          </th>
+          <td>
+            <%= current_customer.email %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+   <div class="row mb-3">
+     <h3 class="col-2">配送先</h2>
+     <%= link_to "一覧を見る", shipping_addresses_path, class:"col-2 btn bg-dark-brown" %>
+    </div>
+
+   <div class="row mb-3">
+     <h3 class="col-2">注文履歴</h2>
+     <%= link_to "一覧を見る", orders_path, class:"col-2 btn bg-dark-brown" %>
+    </div>
   </div>
-
-  <table  style="width: 60%;" class="table table-bordered mb-5">
-    <tr>
-      <th style="width: 25%;">
-        氏名
-      </th>
-      <th>
-        <%= current_customer.family_name %> <%= current_customer.first_name %>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        カナ
-      </th>
-      <th>
-        <%= current_customer.family_name_kana %> <%= current_customer.first_name_kana %>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        郵便番号
-      </th>
-      <th>
-        <%= current_customer.postal_code %>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        住所
-      </th>
-      <th>
-        <%= current_customer.address %>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        電話番号
-      </th>
-      <th>
-        <%= current_customer.telephone_number %>
-      </th>
-    </tr>
-    <tr>
-      <th>
-        メールアドレス
-      </th>
-      <th>
-        <%= current_customer.email %>
-      </th>
-    </tr>
-</table>
-
- <div class="row mb-3">
-   <h3 class="col-2 mr-3" >配送先</h2>
-   <%= link_to "一覧を見る", shipping_addresses_path, class:"col-2 btn btn-primary" %>
-  </div>
-
- <div class="row mb-3">
-   <h3 class="col-2 mr-3" >注文履歴</h2>
-   <%= link_to "一覧を見る", orders_path, class:"col-2 btn btn-primary" %>
-  </div>
-
 </div>
-
 
 
