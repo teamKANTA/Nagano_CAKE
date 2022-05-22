@@ -1,3 +1,1 @@
-<% flash.each do |key, value| %>
-  <%= content_tag(:p, value, class: key) %>
-<% end %>
+<% if notice %> <%= notice %> <% end %>

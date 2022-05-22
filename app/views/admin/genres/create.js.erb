@@ -1,3 +1,19 @@
 $('.js-form')[0].reset();
 $('#erorr').html("<%= j(render 'layouts/error_messages', model: @genre) %>");
 $('#index').html("<%= j(render "genre_index", genres: @genres) %>");
+$('#flash-message').html('<%= j(render "layouts/flash_message") %>');
+
+function sleep(msec) {
+   return new Promise(function(resolve) {
+
+      setTimeout(function() {resolve()}, msec);
+
+   })
+};
+
+$(document).ready(function (){
+  $('#flash-message').slideDown(1000,async function start(){
+    await sleep(2000);
+    $('#flash-message').slideUp(1000);
+  });
+});
