@@ -1,5 +1,7 @@
+<%= render 'layouts/error_messages', model: @customer %>
+
 <div class="container my-4">
-  <h3 class="bg-light d-inline-block px-4 mx-5 mb-3"><%= @customer.family_name %><%= @customer.first_name %>さんの会員情報編集</h3>
+  <h3 class="bg-light d-inline-block px-4 mx-5 mb-3"><%= @customer_name %>さんの会員情報編集</h3>
 
   <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
 
