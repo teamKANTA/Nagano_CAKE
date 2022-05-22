@@ -14,6 +14,8 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.save
       flash[:notice] = "カートに商品が追加されました。"
       redirect_to cart_items_path
+    else
+      redirect_to request.referer, notice: "個数を選択してください"
     end
   end
 
@@ -25,12 +27,15 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
     @cart_items = current_customer.cart_items
+    item = @cart_item.item.name
+    flash.now[:notice] = "#{item}の個数が変更されました。"
     render 'cart_items'
   end
 
   def empty
     current_customer.cart_items.destroy_all
     @cart_items = current_customer.cart_items
+    flash.now[:notice] = "全ての商品が削除されました。"
     render 'cart_items'
   end
 
@@ -38,6 +43,8 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     @cart_items = current_customer.cart_items
+    item = @cart_item.item.name
+    flash.now[:notice] = "商品(#{item})が削除されました。"
     render 'cart_items'
   end
 
