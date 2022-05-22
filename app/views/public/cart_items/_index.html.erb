@@ -1,9 +1,9 @@
-<h3 class="bg-orange inline-block px-4 mx-2">ショッピングカート</h3>
-<% if @cart_items.present? %>
+<h3 class="bg-orange inline-block px-4 mx-3">ショッピングカート</h3>
+  <% if @cart_items.present? %>
     <div class="ml-auto">
       <%= link_to "カートを空にする", empty_path, method: :delete, class: "btn btn-sm btn-danger px-3", remote: true %>
     </div>
-    <table class="table table-bordered mt-4">
+    <table class="table table-bordered my-4">
       <thead>
         <tr class="bg-light-brown">
           <th>商品名</th>

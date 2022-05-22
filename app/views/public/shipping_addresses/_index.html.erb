@@ -1,11 +1,10 @@
-
-<table style="width: 800px;" class="table table-bordered">
+<table class="table table-bordered">
   <thead>
-    <tr>
-      <th class="col-2">郵便番号</th>
-      <th>住所</th>
-      <th class="col-2">宛名</th>
-      <th colspan="2"></th>
+    <tr class="bg-light-brown">
+      <th class="col-1">郵便番号</th>
+      <th class="col-4">住所</th>
+      <th class="col-3">宛名</th>
+      <th class="col-2"></th>
     </tr>
   </thead>
   <tbody>
@@ -15,10 +14,8 @@
         <td><%= address_date.address %></td>
         <td><%= address_date.name %></td>
         <td class="d-flex justify-content-center">
-          <%= link_to "編集する", edit_shipping_address_path(address_date), class: "btn btn-success mr-3" %>
-          <%= link_to "削除する", shipping_address_path(address_date), method: :delete, class: "btn btn-danger", remote: true %>
-
-
+          <%= link_to "編集する", edit_shipping_address_path(address_date), class: "btn btn-sm bg-dark-brown mr-3" %>
+          <%= link_to "削除する", shipping_address_path(address_date), method: :delete, class: "btn btn-sm btn-danger", remote: true %>
         </td>
       </tr>
     <% end %>
