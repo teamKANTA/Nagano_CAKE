@@ -15,7 +15,9 @@
       <%= render "layouts/header", customer: current_customer %>
     </header>
     <main>
-      <%= render "layouts/flash_message" %>
+      <div class="flash-message" style="display:none;">
+        <%= render "layouts/flash_message" %>
+      </div>
       <%= yield %>
     </main>
   </body>
