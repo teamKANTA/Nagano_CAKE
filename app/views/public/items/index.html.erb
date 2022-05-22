@@ -15,7 +15,7 @@
             <%= link_to item_path(item.id) do %>
               <%= image_tag item.get_item_image(200,200), style: "width: 200px; height: 200px;" %><br>
             <% end %>
-            <p class="item-name"><%= item.name %></p>
+            <p><%= item.name %></p>
             <% if item.is_active == true %>
               <p>¥<%= (item.with_tax_price).to_s(:delimited) %></p> 
             <% else %>
