@@ -1,9 +1,9 @@
 <div class="container mx-auto">
   <div class="row">
     <div class="col-2">
-      <table class="table table-hover table-bordered" style="height:300px;">
+      <table class="table table-hover table-bordered">
         <thead>
-          <tr>
+          <tr class="bg-dark-brown">
             <th class="text-center">
               ジャンル検索
             </th>
@@ -11,7 +11,7 @@
         </thead>
         <tbody>
           <% @genres.each do |genre| %>
-            <tr>
+            <tr class="bg-light-brown">
               <td style="border:none;">
                 <%= link_to genre.name, search_items_path(genre.id), method: :get,class: "text-dark" %>
               </td>
@@ -20,31 +20,35 @@
         </tbody>
       </table>
     </div>
+
     <div class="col-10">
-      <div style="background:url(/assets/toppage-cake.jpg); background-size:cover; height:300px; width: 700px;">
-        <div style="background-color: rgba(255,255,255,0.75); height: 300px;">
-          <h5 class=" d-flex justify-content-center align-items-center" style="height: 300px;">
-            ようこそ！、ながのCAKEへ！<br>
-            このサイトは、ケーキ販売のECサイトになります。<br>
-            会員でない方も商品の閲覧はできますが、<br>
-            購入には会員登録が必要になります。
-          </h5>
+      <div class="heading-image mb-4">
+        <div style="background:url(/assets/toppage-cake.jpg); background-size:cover;">
+          <div style="background-color: rgba(255,255,255,0.45);">
+            <h5 class="d-flex justify-content-center align-items-center" style="height: 300px;">
+              ようこそ！、ながのCAKEへ！<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。
+            </h5>
+          </div>
         </div>
       </div>
-      <h2 class="my-3"><strong>新着商品</strong></h2>
+
+      <h2 class="d-inline-block px-4 mb-3 bg-orange">新着商品</h2>
       <div class="row">
         <% @items.each do |item| %>
           <div class="col-3">
             <%= link_to item_path(item), style: "color:black;" do %>
-              <p><%= image_tag item.get_item_image(200,100), style: "width: 180px; height: 150px;" %></p>
-              <p><%= item.name %></p>
-              <p>¥<%= item.with_tax_price.to_s(:delimited) %></p>
+              <p><%= image_tag item.get_item_image(150,150), style: "width: 200px; height: 180px;" %></p>
+              <p class="ml-1"><%= item.name %></p>
+              <p class="ml-1">¥<%= item.with_tax_price.to_s(:delimited) %></p>
             <% end %>
           </div>
         <% end %>
       </div>
       <p class="text-right mt-3">
-        <%= link_to "全ての商品を見る >", items_path %>
+        <%= link_to "全ての商品を見る >", items_path, class: "bg-light-brown", style: "color: black;" %>
       </p>
     </div>
   </div>
