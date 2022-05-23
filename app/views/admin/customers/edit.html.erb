@@ -1,7 +1,7 @@
 <%= render 'layouts/error_messages', model: @customer %>
 
 <div class="container my-4">
-  <h3 class="bg-light d-inline-block px-4 mx-5 mb-3"><%= @customer_name %>さんの会員情報編集</h3>
+  <h3 class="bg-orange d-inline-block px-4 mx-5 mb-3"><%= @customer_name %>さんの会員情報編集</h3>
 
   <%= form_with model: @customer, url: admin_customer_path(@customer.id), method: :patch do |f| %>
 
@@ -22,7 +22,7 @@
 
   <div class="form-group-row d-flex">
     <div class="col-2"></div>
-    <%= f.submit "変更を保存", class: "btn btn-success col-2" %>
+    <%= f.submit "変更を保存", class: "btn bg-orange-dark col-2" %>
   </div>
 
 

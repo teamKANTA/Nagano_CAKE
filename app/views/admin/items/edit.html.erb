@@ -2,14 +2,14 @@
   <%= render "layouts/error_messages", model: @item%>
   <div class="row">
     <div class="col-xs-12">
-      <h5 class="p-3 mb-5 head-line title_h2 text-center bg-light"><strong>商品情報変更</strong></h5>
+      <h3 class="bg-orange d-inline-block px-4 mx-5 mb-3">商品情報変更</h3>
     </div>
   </div>
   <div class="col-lg-8 mx-auto">
     <%= form_with model: @item,url: admin_item_path, local: :true do |f| %>
       <%= render "form_item", f: f %>
       <div class="text-center">
-  	  <%= f.submit "商品情報更新", class: "btn btn-success btn-lg" %>
+  	  <%= f.submit "商品情報更新", class: "btn bg-orange-dark btn-lg" %>
   	  </div>
     <% end %>
     </div>
