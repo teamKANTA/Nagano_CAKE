@@ -36,7 +36,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def empty
-    #カートない商品を全て削除
+    #カート内商品を全て削除
     current_customer.cart_items.destroy_all
     @cart_items = current_customer.cart_items
     flash.now[:notice] = "全ての商品が削除されました。"
