@@ -51,15 +51,15 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <div class="actions my-4">
+    <div class="actions mt-1">
       <label for="submit" class="col-sm-3 col-form-label"></label>
       <%= f.submit "新規登録", class: "btn bg-dark-brown px-5" %>
     </div>
   <% end %>
-
   </div>
 
-  <h3 class="d-inline-block px-4 mx-5 mb-3 bg-light-brown">既に登録済みの方</h3>
-  <p class="ml-5 mt-3"><%= link_to "こちら", new_customer_session_path, class: "hover-link" %> からログインしてください。</p>
-
+  <div class="sign-up mt-3">
+    <h5 class="bg-light-brown d-inline-block px-3"> 既に登録済みの方</h3>
+    <p class="ml-5"><%= link_to "こちら", new_customer_session_path, class: "hover-link" %> からログインしてください。</p>
+  </div>
 </div>
