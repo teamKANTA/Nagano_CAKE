@@ -12,3 +12,4 @@ $(document).ready(function (){
     $('#flash-message').slideUp(1000);
   });
 });
+
