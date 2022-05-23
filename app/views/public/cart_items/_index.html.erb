@@ -14,6 +14,7 @@
         </tr>
       </thead>
       <tbody>
+        <!--合計金額初期値0-->
         <% total_price = 0 %>
         <% cart_items.each do |cart_item| %>
           <tr>
@@ -29,6 +30,7 @@
               <% end %>
             </td>
             <td class="align-middle">¥<%= cart_item.subtotal.to_s(:delimited) %></td>
+            <!-- ↓eachで取り出された商品の小計(cart_item.subtotal)を一つずつ足してtatal_priceに格納-->
             <% total_price +=  cart_item.subtotal %>
             <td class="align-middle text-center"><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-sm btn-danger", remote: true %></td>
           </tr>
@@ -46,6 +48,7 @@
           <tr>
             <th class="bg-light-brown">合計金額</th>
             <th>
+              <!--eachで計算された合計金額の表示-->
               ¥<%= total_price.to_s(:delimited) %>
             </th>
           </tr>

@@ -19,6 +19,7 @@ class Admin::CustomersController < ApplicationController
     if @customer.update(customer_params)
       redirect_to admin_customer_path(@customer), notice: "会員情報を更新しました。"
     else
+      #名前をブランクで更新した場合、名前が表示されなくなるため、一度、会員情報を引き出し、変数に設定した。
       customer =Customer.find(params[:id])
       @customer_name = customer.family_name + customer.first_name
       render "edit"
