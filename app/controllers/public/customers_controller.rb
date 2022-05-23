@@ -19,7 +19,9 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+    #会員のis_deletedにtrueを入れて更新
     current_customer.update(is_deleted: true)
+    #ログイン情報をリセット（ログインされたままに
     reset_session
     redirect_to root_path, notice: "退会しました"
   end
