@@ -1,13 +1,11 @@
-<div class="container my-4">
-  <h3 class="d-inline-block px-4 mx-5 mb-3 bg-orange">マイページ</h3>
-
-  <div class="ml-4">
-    <div class="row my-3">
-     <h3 class="col-2">登録情報</h3>
-     <%= link_to "編集する", edit_customer_path, class: "btn bg-dark-brown ml-5" %>
+<div class="container">
+  <h3 class="d-inline-block px-4 ml-5 orange bg-light"><i class="fas fa-user dark-brown"></i> マイページ</h3>
+  <div class="row px-5 mt-4">
+    <h4 class="col-2">登録情報</h4>
+      <%= link_to "編集する", edit_customer_path, class: "btn btn-sm bg-dark-brown ml-5" %>
     </div>
 
-    <div class="row mb-3 ml-4">
+    <div class="row my-2 px-5">
       <table class="col-6 table table-bordered mb-5">
         <tr>
           <th class="bg-light-brown col-4">
@@ -58,16 +56,15 @@
           </td>
         </tr>
       </table>
-    </div>
-
-   <div class="row mb-3">
-     <h3 class="col-2">配送先</h2>
-     <%= link_to "一覧を見る", shipping_addresses_path, class:"col-2 btn bg-dark-brown" %>
-    </div>
-
-   <div class="row mb-3">
-     <h3 class="col-2">注文履歴</h2>
-     <%= link_to "一覧を見る", orders_path, class:"col-2 btn bg-dark-brown" %>
+    <div class="col-5 offset-1">
+      <div class="row">
+        <h4 class="col-5">配送先</h4>
+        <%= link_to "一覧を見る", shipping_addresses_path, class:"btn bg-dark-brown" %>
+      </div>
+      <div class="row my-3">
+        <h4 class="col-5">注文履歴</h4>
+        <%= link_to "一覧を見る", orders_path, class:"btn bg-dark-brown" %>
+      </div>
     </div>
   </div>
 </div>
