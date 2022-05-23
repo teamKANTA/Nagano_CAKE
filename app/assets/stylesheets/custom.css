@@ -56,3 +56,23 @@ body{
 }
 
 
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969; /*文字の色を変える*/
+ 
+}
+
+.pagination>.active>a {     
+  background: #93c9ff;
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+.pagination>.active>.page-link{
+  background-color: #9f6f55;
+}
+
+.pagination>li>a:hover {        
+  border-radius: 15px; /*角を丸くする*/
+  background-color: #9f6f55;
+  color: white;
+}
