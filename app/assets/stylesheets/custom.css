@@ -44,3 +44,15 @@ body{
   color: #9f6f55;
 }
 
+.hover-link{
+  text-decoration: none;
+  color: #9f6f55;
+}
+
+.hover-link:hover {
+  background-color: #9f6f55;
+  color: white;
+  text-decoration: none;
+}
+
+
