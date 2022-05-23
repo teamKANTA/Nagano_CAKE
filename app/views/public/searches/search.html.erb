@@ -1,23 +1,27 @@
-<h2 class="mt-2 mx-5 mb-5 px-4 py-2 d-inline-block bg-light">検索結果</h2>
-<div class="container－fluid takasa mb-5">
-  <div class="row">
+<div class="container my-4">
+  <h3 class="d-inline-block px-4 mb-3 ml-5 bg-orange">商品(<%= params[:word] %>)一覧<span style="font-size:20px;">（全<%= @quantity %>件）</span></h3>
+  <div class="row ml-4 mt-3">
     <%= render "public/items/sidebar", genres: @genres %>
-    <div class="col-lg-7">
-      <h2>商品(<%= params[:word] %>)一覧<span style="font-size:20px;">（全<%= @quantity %>件）</span></h2><br>
-      <div class="row">
+
+    <div class="col-10">
+      <div class="row d-flex flex-wrap">
         <% @items.each do |item| %>
-          <div class="box" style="float:left; margin-right:20px;">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_item_image(200,200) %><br>
+          <div class="col-3">
+            <%= link_to item_path(item), style: "color:black;" do %>
+              <p><%= image_tag item.get_item_image(150,150), style: "width: 200px; height: 180px;" %></p>
+              <p class="ml-1 text-bold"><strong><%= item.name %></strong></p>
+              <% if item.is_active == true %>
+                <p>¥<%= (item.with_tax_price).to_s(:delimited) %></p>
+              <% else %>
+                <p class="orange">売り切れ中</p>
+              <% end %>
             <% end %>
-            <p><%= item.name %></p>
-            <p>¥<%= (item.with_tax_price).to_s(:delimited) %></p>
           </div>
         <% end %>
-      </div>
-      <div class="row">
+       </div>
+       <div class="row">
         <div class="mx-auto">
-          <%= paginate @items %>
+            <%= paginate @items %>
         </div>
       </div>
     </div>

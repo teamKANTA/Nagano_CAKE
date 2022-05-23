@@ -1,12 +1,12 @@
-<div class="container px-4">
-  <h3 class="bg-light d-inline-block px-4 mx-5">注文情報確認</h3>
+<div class="container my-4">
+  <h3 class="d-inline-block px-4 mx-5 mb-3 bg-orange">注文情報確認</h3>
 
-  <div class="container">
+  <div class="container my-4">
     <%= form_with model: @order do |f| %>
     <div class="row mb-4">
       <table class="items col-8 table table-bordered">
         <thead>
-          <tr class="bg-light">
+          <tr class="bg-light-brown">
             <td col="4">商品名</td>
             <td>単価(税込)</td>
             <td>数量　　</td>
@@ -28,15 +28,15 @@
         <tbody>
           <tr>
             <tr>
-              <td class="bg-light">送料</td>
+              <td class="bg-light-brown">送料</td>
               <td>￥<%= @order.shipping_fee.to_s(:delimited) %></td>
             </tr>
             <tr>
-              <td class="bg-light">商品合計</td>
+              <td class="bg-light-brown">商品合計</td>
               <td>￥<%= @cart_items_total.to_s(:delimited) %></td>
             </tr>
             <tr>
-              <td class="bg-light">請求金額</td>
+              <td class="bg-light-brown">請求金額</td>
               <td>￥<%= @order.billing_amount.to_s(:delimited) %></td>
             </tr>
           </tr>
@@ -59,7 +59,7 @@
         <%= @order.name %>
     </div>
     <div class="d-flex justify-content-center">
-        <%= f.submit "注文を確定する", class: "btn btn-success" %>
+        <%= f.submit "注文を確定する", class: "btn bg-dark-brown" %>
     </div>
     <% end %>
   </div>

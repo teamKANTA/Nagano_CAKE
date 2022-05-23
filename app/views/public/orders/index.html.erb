@@ -1,11 +1,11 @@
-<div class="container px-4">
-  <h3 class="bg-light d-inline-block px-4 mx-5">注文履歴一覧</h3>
+<div class="container my-4">
+  <h3 class="d-inline-block px-4 mx-5 mb-3 bg-orange">注文履歴一覧</h3>
 
-  <div class="container my-3">
+  <div class="ml-4">
     <% if @orders.any? %>
       <table class="table table-bordered">
         <thead>
-          <tr>
+          <tr class="bg-dark-brown">
             <td>注文日</td>
             <td class="col-5">配送先</td>
             <td class="col-2">注文商品</td>
@@ -17,7 +17,7 @@
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td class="align-middle"><%= order.created_at.strftime('%Y/%m/%d')%></td>
+              <td class="align-middle bg-light-brown"><%= order.created_at.strftime('%Y/%m/%d')%></td>
               <td>〒<%= order.postal_code%><br>
                   <%= order.address %><br>
                   <%= order.name %>
@@ -31,13 +31,13 @@
               </td>
               <td class="align-middle">￥<%= order.billing_amount.to_s(:delimited) %></td>
               <td class="align-middle"><%= order.order_status_i18n %></td>
-              <td class="align-middle"><%= link_to "表示する", order_path(order), class: "btn btn-sm btn-primary" %></td>
+              <td class="align-middle"><%= link_to "表示する", order_path(order), class: "btn btn-sm bg-dark-brown" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
     <% else %>
-      <h3 class="text-center">注文はありません</h3>
+      <h3 class="text-center">注文履歴はありません</h3>
     <% end %>
   </div>
 </div>

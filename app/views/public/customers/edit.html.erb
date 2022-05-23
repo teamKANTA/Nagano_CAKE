@@ -1,53 +1,46 @@
 <%= render 'layouts/error_messages', model: current_customer %>
 
 <div class="container my-4">
-  <h3 class="bg-light d-inline-block px-4 mx-5 mb-3">会員情報編集</h3>
+  <h3 class="bg-orange d-inline-block px-4 mx-5 mb-3">会員情報編集</h3>
 
-  <%= form_with model: current_customer do |f| %>
-
-　　<div class="form-group row">
-　　  <div class="col-2">
-　　    <%= f.label :氏名 %>
-　　  </div>
+  <div class="ml-4">
+    <%= form_with model: current_customer do |f| %>
+  　　<div class="form-group row">
+　　    <%= f.label :氏名, class: "col-2" %>
 　　    <%= f.text_field :family_name, autofocus: true, class: "mr-5" %>
         <%= f.text_field :first_name %>
-    </div>
-　　<div class="form-group row">
-　　  <div class="col-2">
-　　    <%= f.label :フリガナ %>
-　　  </div>
+      </div>
+      
+　  　<div class="form-group row">
+　　    <%= f.label :フリガナ, class: "col-2" %>
 　　    <%= f.text_field :family_name_kana, class: "mr-5" %>
         <%= f.text_field :first_name_kana %>
-    </div>
-　　<div class="form-group row">
-　　  <div class="col-2">
-　　    <%= f.label :郵便番号 %>
-　　  </div>
+      </div>
+      
+　　  <div class="form-group row">
+　　    <%= f.label :郵便番号, class: "col-2" %>
 　　    <%= f.text_field :postal_code %>
-    </div>
-　　<div class="form-group row">
-　　  <div class="col-2">
-　　    <%= f.label :住所 %>
-　　  </div>
+      </div>
+      
+　  　<div class="form-group row">
+　　    <%= f.label :住所, class: "col-2" %>
 　　    <%= f.text_field :address, class: "col-9" %>
-    </div>
-    <div class="form-group row">
-　　  <div class="col-2">
-　　    <%= f.label :電話番号 %>
-　　  </div>
+      </div>
+      
+      <div class="form-group row">
+　　    <%= f.label :電話番号, class: "col-2" %>
 　　    <%= f.text_field :telephone_number %>
-    </div>
-    <div class="form-group row">
-　　  <div class="col-2">
-　　    <%= f.label :メールアドレス %>
-　　  </div>
+      </div>
+      
+      <div class="form-group row">
+　　    <%= f.label :メールアドレス, class: "col-2" %>
 　　    <%= f.text_field :email %>
-    </div>
-    <div class="row">
-      <div class="col-3"></div>
-      <%= f.submit "編集内容を保存", class: "col-3 btn btn-success mr-5" %>
-      <%= link_to "退会する", quit_path, class: "btn btn-danger" %>
-    </div>
-
-  <% end %>
+      </div>
+      
+      <div class="row justify-content-center mt-4">
+        <%= f.submit "編集内容を保存", class: "col-3 btn bg-dark-brown mr-5" %>
+        <%= link_to "退会する", quit_path, class: "btn btn-outline-danger" %>
+      </div>
+    <% end %>
+  </div>
 </div>
