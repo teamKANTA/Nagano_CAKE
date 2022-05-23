@@ -4,7 +4,8 @@
   <div class="container mt-4 m-2">
 
     <div class="log-in">
-      <h5 class="bg-orange-dark d-inline-block px-3"> 管理者の方はこちらからログイン </h5>
+      <h5 class="bg-light-brown d-inline-block px-3"> 管理者の方はこちらからログイン </h5>
+      <div class="text-center"><p class="alert"><%= alert %></p></div>
   
       <div class="form w-75 mx-auto my-4">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -24,7 +25,7 @@
           </div>  
 
           <div class="actions text-center mt-4">
-            <%= f.submit "ログイン", class: "btn bg-orange-dark px-5" %>
+            <%= f.submit "ログイン", class: "btn bg-light-brown px-5" %>
           </div>
         <% end %>
       </div>
