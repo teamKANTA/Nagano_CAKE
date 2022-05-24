@@ -55,11 +55,18 @@ body{
   text-decoration: none;
 }
 
+.navbar{
+  border-bottom: solid #9f6f55;
+}
+
+footer{
+  border-top: solid #9f6f55;
+  background-color: white;
+}
 
 .pagination>li>a {          
   border: none;     /*枠線をなくす*/
   color: #696969; /*文字の色を変える*/
- 
 }
 
 .pagination>.active>a {     
@@ -76,3 +83,4 @@ body{
   background-color: #9f6f55;
   color: white;
 }
+

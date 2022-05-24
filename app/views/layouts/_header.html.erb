@@ -1,40 +1,111 @@
-<nav class="navbar navbar-expand-lg border-bottom">
+<nav class="navbar navbar-expand-lg">
   <div class="container">
     <div class="navbar-brand">
-      <h1 class="px-5 py-1 border"><%= link_to "LOGO", root_path %></h1>
+      <div class="py-1">
+        <%= link_to root_path do %>
+          <%= image_tag "nagano_logo.jpg", size: "300x60" %>
+        <% end %>
+      </div>
     </div>
+
     <% if customer_signed_in? %>
-    <div class="center">
-      <p>ようこそ、<%= customer.family_name %>さん！</p>
-    </div>
+      <div class="center">
+        <p>ようこそ、<%= customer.family_name %>さん！</p>
+      </div>
     <% end %>
+
     <div class="d-flex align-items-end justify-content-center flex-column bd-highlight mb-3 mt-2" style="height: 80px;">
-      <ul class="navbar-nav mb-2">
+      <ul class="navbar-nav mt-2">
         <% if customer_signed_in? %>
-        <li class="nav-link border px-3"><%= link_to "マイページ", customer_path %></li>
-        <li class="nav-link border px-3 ml-4"><%= link_to "商品一覧", items_path %></li>
-        <li class="nav-link border px-3 ml-4"><%= link_to "カート", cart_items_path %></li>
-        <li class="nav-link border px-3 ml-4"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></li>
+          <li class="nav-link">
+            <%= link_to customer_path, class:"btn bg-dark-brown" do %>
+              <i class="fas fa-user"></i> マイページ
+            <% end %>
+          </li>
+
+          <li class="nav-link ml-3">
+            <%= link_to items_path, class:"btn bg-dark-brown" do %>
+              <i class="fas fa-cookie-bite"></i> 商品一覧
+            <% end %>
+          </li>
+
+          <li class="nav-link ml-3">
+            <%= link_to cart_items_path, class:"btn bg-dark-brown" do %>
+              <i class="fas fa-shopping-cart"></i> カート
+            <% end %>
+          </li>
+
+          <li class="nav-link ml-3">
+            <%= link_to destroy_customer_session_path, method: :delete, class:"btn bg-dark-brown" do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          </li>
+
         <% elsif admin_signed_in? %>
-        <li class="nav-link border px-3"><%= link_to "商品一覧", admin_items_path %></li>
-        <li class="nav-link border px-3 ml-4"><%= link_to "会員一覧", admin_customers_path %></li>
-        <li class="nav-link border px-3 ml-4"><%= link_to "注文履歴一覧", admin_orders_path %></li>
-        <li class="nav-link border px-3 ml-4"><%= link_to "ジャンル一覧", admin_genres_path %></li>
-        <li class="nav-link border px-3 ml-4"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+
+          <li class="nav-link ml-3">
+            <%= link_to admin_items_path, class:"btn bg-dark-brown" do %>
+              <i class="fas fa-cookie-bite"></i> 商品一覧
+            <% end %>
+          </li>
+
+          <li class="nav-link">
+            <%= link_to admin_customers_path, class:"btn bg-dark-brown" do %>
+              <i class="fas fa-users"></i> 会員一覧
+            <% end %>
+          </li>
+
+          <li class="nav-link">
+            <%= link_to admin_orders_path, class:"btn bg-dark-brown" do %>
+              <i class="fas fa-shopping-cart"></i> 注文履歴一覧
+            <% end %>
+          </li>
+
+          <li class="nav-link ml-3">
+            <%= link_to admin_genres_path, class:"btn bg-dark-brown" do %>
+              <i class="fas fa-cookie-bite"></i> ジャンル一覧
+            <% end %>
+          </li>
+
+          <li class="nav-link ml-3">
+            <%= link_to destroy_admin_session_path, method: :delete, class:"btn bg-dark-brown" do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
+          </li>
+
         <% else %>
-        <li class="nav-link border px-3"><%= link_to "About", about_path %></li>
-        <li class="nav-link border px-3 ml-4"><%= link_to "商品一覧", items_path %></li>
-        <li class="nav-link border px-3 ml-4"><%= link_to "新規登録", new_customer_registration_path %></li>
-        <li class="nav-link border px-3 ml-4"><%= link_to "ログイン", new_customer_session_path %></li>
+
+          <li class="nav-link">
+            <%= link_to about_path, class:"btn bg-dark-brown" do %>
+              <i class="fas fa-truck"></i> About
+            <% end %>
+          </li>
+
+        <li class="nav-link ml-3">
+          <%= link_to items_path, class:"btn bg-dark-brown" do %>
+            <i class="fas fa-cookie-bite"></i> 商品一覧
+          <% end %>
+
+          <li class="nav-link ml-3">
+            <%= link_to new_customer_registration_path, class:"btn bg-dark-brown" do %>
+              <i class="fas fa-user-plus"></i> 新規登録
+            <% end %>
+          </li>
+
+          <li class="nav-link ml-3">
+            <%= link_to new_customer_session_path, class:"btn bg-dark-brown" do %>
+              <i class="fas fa-sign-in-alt"></i> ログイン
+            <% end %>
+          </li>
         <% end %>
       </ul>
 
-      <div class="search_form mt-2">
+      <div class="search_form my-2">
         <% if admin_signed_in? %>
           <%= form_with method: :get, url: admin_search_path do |f| %>
             <%= f.select :search, options_for_select([["完全一致"], ["曖昧検索"]]) %>
             <%= f.select :range, options_for_select([["商品"], ["会員(姓カナ)"],["ジャンル"]]) %>
-            <%= f.text_field :word, class: "form-control", placeholder: "Search" %>
+            <%= f.text_field :word, placeholder: "Search" %>
           <% end %>
         <% else %>
           <%= form_with method: :get, url: search_path do |f| %>
