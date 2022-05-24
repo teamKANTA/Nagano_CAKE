@@ -1,4 +1,4 @@
-<table class="table table-borderless">
+<table class="table table-borderless table-hover">
   <thead class="bg-light-brown">
     <th class="text-dark"><%= "商品ID" %></th>
     <th class="text-dark"><%= "商品名" %></th>
@@ -12,7 +12,7 @@
       <td><%= item.id %></td>
       <td>
         <%= link_to admin_item_path(item) do %>
-          <u class="text-dark"><%= item.name %></u>
+          <u class="hover-link"><%= item.name %></u>
         <% end %>
       </td>
       <td>￥<%= item.price.to_s(:delimited) %></td>
