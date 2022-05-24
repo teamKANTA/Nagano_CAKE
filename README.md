@@ -50,7 +50,7 @@ $ git clone git@github.com/teamKANTA/Nagano_CAKE.git
 $ cd Nagano_CAKE
 $ rails db:migrate
 $ rails db:seed
-$ bunle install
+$ bundle install
 $ rails webpacker:install
 $ rails webpacker:compile
 
