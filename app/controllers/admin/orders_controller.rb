@@ -1,9 +1,9 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
-    @orders = Order.page(params[:page])
-    
+    @orders = Order.order("order_status ASC").page(params[:page]).per(15)
+
   end
 
   def show

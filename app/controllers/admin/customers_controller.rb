@@ -29,7 +29,7 @@ class Admin::CustomersController < ApplicationController
   def orders
     @customer = Customer.find(params[:customer_id])
     @customer_name = @customer.family_name + @customer.first_name
-    @orders = @customer.orders.page(params[:page])
+    @orders = @customer.orders.order("order_status ASC").page(params[:page]).per(15)
   end
 
   private
