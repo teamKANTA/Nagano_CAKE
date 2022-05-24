@@ -43,7 +43,7 @@
 
         <% elsif admin_signed_in? %>
 
-          <li class="nav-link ml-3">
+          <li class="nav-link">
             <%= link_to admin_items_path, class:"btn bg-dark-brown" do %>
               <i class="fas fa-cookie-bite"></i> 商品一覧
             <% end %>
@@ -61,13 +61,13 @@
             <% end %>
           </li>
 
-          <li class="nav-link ml-3">
+          <li class="nav-link">
             <%= link_to admin_genres_path, class:"btn bg-dark-brown" do %>
               <i class="fas fa-cookie-bite"></i> ジャンル一覧
             <% end %>
           </li>
 
-          <li class="nav-link ml-3">
+          <li class="nav-link">
             <%= link_to destroy_admin_session_path, method: :delete, class:"btn bg-dark-brown" do %>
               <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>

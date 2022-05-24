@@ -28,7 +28,7 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   protected
-　#会員情報を確認するコマンド
+#会員情報を確認するコマンド
   def customer_state
     #customerテーブルからemail情報をもとにcustomerのデータを引き出す
     @customer = Customer.find_by(email: params[:customer][:email])
