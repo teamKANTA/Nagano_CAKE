@@ -1,0 +1,30 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 ml-5 orange bg-light"><i class="fas fa-cookie-bite dark-brown"></i> 商品(<%= params[:word] %>)一覧<span style="font-size:20px;">（全<%= @quantity %>件）</span></h3>
+
+  <div class="row ml-4 mt-3">
+    <%= render "public/items/sidebar", genres: @genres %>
+
+    <div class="col-10">
+      <div class="row d-flex flex-wrap">
+        <% @items.each do |item| %>
+          <div class="col-3">
+            <%= link_to item_path(item), style: "color:black;" do %>
+              <p><%= image_tag item.get_item_image(150,150), style: "width: 200px; height: 180px;" %></p>
+              <p class="ml-1 text-bold"><strong><%= item.name %></strong></p>
+              <% if item.is_active == true %>
+                <p>¥<%= (item.with_tax_price).to_s(:delimited) %></p>
+              <% else %>
+                <p class="orange">売り切れ中</p>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+       </div>
+       <div class="row">
+        <div class="mx-auto">
+            <%= paginate @items %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

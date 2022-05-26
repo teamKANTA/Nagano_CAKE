@@ -1,0 +1,86 @@
+body{
+  font-family: "Helvetica", "Montserrat", "Courier New", "Segoe UI", sans-serif;
+}
+
+
+.bg-orange{
+  background-color: #eb6101;
+  color: white;
+}
+
+.bg-orange-dark{
+  background-color: #cd6d22;
+  color: white;
+}
+
+.bg-brown{
+  background-color: #8a3b00;
+  color: white;
+}
+
+.bg-dark-brown{
+  background-color: #9f6f55;
+  color: white;
+}
+
+.bg-light-brown{
+  background-color: #F4EBE4;
+}
+
+
+.orange{
+  color: #eb6101;
+}
+
+.orange-dark{
+  color: #cd6d22;
+}
+
+.brown{
+  color: #8a3b00;
+}
+
+.dark-brown{
+  color: #9f6f55;
+}
+
+.hover-link{
+  text-decoration: none;
+  color: #9f6f55;
+}
+
+.hover-link:hover {
+  background-color: #9f6f55;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar{
+  border-bottom: solid #9f6f55;
+}
+
+footer{
+  border-top: solid #9f6f55;
+  background-color: white;
+}
+
+.pagination>li>a {          
+  border: none;     /*枠線をなくす*/
+  color: #696969; /*文字の色を変える*/
+}
+
+.pagination>.active>a {     
+  background: #93c9ff;
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+.pagination>.active>.page-link{
+  background-color: #9f6f55;
+}
+
+.pagination>li>a:hover {        
+  border-radius: 15px; /*角を丸くする*/
+  background-color: #9f6f55;
+  color: white;
+}
+

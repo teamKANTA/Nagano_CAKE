@@ -1,0 +1,95 @@
+<h3 class="mt-2 mx-5 mb-5 px-4 py-2 d-inline-block bg-light-brown">検索結果(<%= params[:search] %>)</h3>
+<% if @range == "商品" %>
+  <div class="container">
+    <div class="row justify-content-between">
+      <h3 class="bg-light orange d-inline-block px-4 mx-5 mb-3"><i class="fas fa-cookie-bite dark-brown"></i> 商品(<%= params[:word] %>)一覧</h5>
+    <div>
+        <%= link_to new_admin_item_path do %>
+          <i class="fas fa-plus" style="color:green;"></i>
+          <i class="text-dark">新規商品登録</i>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <%= render "admin/items/item_list", items: @items %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="mx-auto">
+        <%= paginate @items %>
+      </div>
+    </div>
+  </div>
+<% elsif @range == "ジャンル" %>
+  <div class="container">
+    <%= render "layouts/error_messages", model: @genre%>
+    <div class="row">
+      <h3 class="bg-light orange d-inline-block px-4 mx-5 mb-3"><i class="fas fa-columns dark-brown"></i> ジャンル一覧・追加</h3>
+    </div>
+
+    <div class="col-lg-8">
+      <%= form_with model: @genre,url: admin_genres_path, method: :post, local: :true do |f| %>
+        <strong><%= f.label :"ジャンル名", class: "col-sm-3 control-label" %></strong>
+        <span class="mr-5"><%= f.text_field :name  %></span>
+    	  <%= f.submit "新規登録", class: "btn bg-orange-dark col-sm-2 " %>
+      <% end %>
+    </div>
+
+    <div class="row my-5">
+      <div class="col-lg-4">
+        <table class="table table-borderless table-hover">
+          <thead class="bg-light-brown">
+            <th>ジャンル(<%= params[:word] %>)一覧</th>
+            <th></th>
+          </thead>
+
+          <% @genres.each do |genre| %>
+            <tbody>
+              <td><%= genre.name %></td>
+              <td class="text-center"><%= link_to "編集する", edit_admin_genre_path(genre), class: "btn bg-dark-brown btn-sm" %></td>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+<% elsif @range == "会員(姓カナ)" %>
+  <div class="container">
+    <h3 class="bg-light orange d-inline-block px-4 mx-5 mb-3"><i class="fas fa-users dark-brown"></i> 会員(<%= params[:word] %>)一覧</h3>
+
+    <table class="table table-hover">
+      <thead class="bg-light-brown">
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+           <td><%= customer.id %></td>
+           <td>
+             <%= link_to admin_customer_path(customer.id) do %>
+               <%= customer.family_name %><%= customer.first_name %>
+             <% end %>
+           </td>
+           <td><%= customer.email %></td>
+           <% if customer.is_deleted == false %>
+              <td class="text-success"><strong>有効</strong></td>
+           <% else %>
+              <td class="text-black-50"><strong>退会</strong></td>
+           <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+
+    </table>
+    <div class="paginate d-flex justify-content-center">
+        <%= paginate @customers %>
+    </div>
+  </div>
+<% end %>

@@ -2,15 +2,30 @@
 <html>
   <head>
     <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5/css/bootstrap.min.css">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'custom', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= render "layouts/header", customer: current_customer %>
+    </header>
+    <main class="pb-5">
+      <div class="text-center" style="height:30px;">
+        <div id="flash-message" style="display:none;">
+          <%= render "layouts/flash_message" %>
+        </div>
+      </div>
+      <%= yield %>
+    </main>
+    <footer class="text-center fixed-bottom brown mt-3 pt-1" style="height: 40px"><small>ながのCAKE</small>
+    </footer>
   </body>
 </html>

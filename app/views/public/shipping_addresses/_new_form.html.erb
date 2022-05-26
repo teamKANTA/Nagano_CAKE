@@ -1,0 +1,15 @@
+<%= form_with model: address_date, class: "js-form", local: false do |f| %>
+  <div class="form-group row">
+    <%= f.label :郵便番号（ハイフンなし）,  class: "col-3" %>
+    <%= f.text_field :postal_code, "placeholder" => "0000000" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :住所, class: "col-3" %>
+    <%= f.text_field :address, class: "col-5", "placeholder" => "東京都渋谷区代々木神園町0-0" %>
+  </div>
+  <div class="form-group row">
+    <%= f.label :宛名, class: "col-3" %>
+    <%= f.text_field :name,  "placeholder" => "令和道子" %>
+    <%= f.submit "新規登録", class: "btn bg-dark-brown col-2 ml-auto mr-3" %>
+  </div>
+<% end %>

@@ -1,0 +1,65 @@
+<div class="container">
+  <h3 class="d-inline-block px-4 ml-5 orange bg-light"><i class="fas fa-user dark-brown"></i> 新規会員登録</h3>
+
+  <div class="mx-4 mt-3">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "layouts/error_messages", model: @customer %>
+
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label mr-5">名前</label>
+        <label for="family_name" class="col-form-label mx-2">(姓)</label>
+        <%= f.text_field :family_name, autocomplete: "family-name", "placeholder" => "令和" %>
+        <label for="first_name" class="col-form-label ml-4 mr-2">(名)　</label>
+        <%= f.text_field :first_name, autocomplete: "first_name", "placeholder" => "道子" %>
+    </div>
+
+    <div class="form-group row">
+      <label for="name-kana" class="col-sm-2 col-form-label mr-4">フリガナ</label>
+        <label for="family_name_kana" class="col-form-label ml-3 mr-2"> (セイ)</label>
+        <%= f.text_field :family_name_kana, autocomplete: "family-name-kana", "placeholder" => "レイワ" %>
+        <label for="first_name_kana" class="col-form-label ml-4 mr-2">(メイ)</label>
+        <%= f.text_field :first_name_kana, autocomplete: "first_name-kana", "placeholder" => "ミチコ" %>
+    </div>
+
+    <div class="form-group row">
+      <label for="postal_code" class="col-sm-3 col-form-label">郵便番号(ハイフンなし)</label>
+      <%= f.text_field :postal_code, autocomplete: "postal_code", "placeholder" => "0000000" %>
+    </div>
+
+    <div class="form-group row">
+      <label for="address" class="col-sm-3 col-form-label">住所</label>
+      <%= f.text_field :address, autocomplete: "address", "placeholder" => "東京都渋谷区代々木神園町0-0" %>
+    </div>
+
+    <div class="form-group row">
+      <label for="email" class="col-sm-3 col-form-label">メールアドレス</label>
+      <%= f.email_field :email, autocomplete: "email", class: "col-9", "placeholder" => "sample@example.com" %>
+    </div>
+
+    <div class="form-group row">
+      <label for="phone_number" class="col-sm-3 col-form-label">電話番号(ハイフンなし)</label>
+      <%= f.text_field :telephone_number, autocomplete: "phone-number", "placeholder" => "00000000000" %>
+    </div>
+
+    <div class="form-group row">
+      <label for="password" class="col-sm-3 col-form-label">パスワード(6文字以上)</label>
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="form-group row">
+      <label for="password_confirmation" class="col-sm-3 col-form-label">パスワード(確認用)</label>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="actions mt-1">
+      <label for="submit" class="col-sm-3 col-form-label"></label>
+      <%= f.submit "新規登録", class: "btn bg-dark-brown px-5" %>
+    </div>
+  <% end %>
+  </div>
+
+  <div class="sign-up mt-3">
+    <h5 class="bg-light-brown d-inline-block px-3"> 既に登録済みの方</h3>
+    <p class="ml-5"><%= link_to "こちら", new_customer_session_path, class: "hover-link" %> からログインしてください。</p>
+  </div>
+</div>
